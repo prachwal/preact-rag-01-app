@@ -1,15 +1,10 @@
-import type { Context } from '@netlify/functions'
+import type { Context } from '@netlify/functions';
+import { router } from '../../shared/routes/index.ts';
 
-export default (request: Request, _context: Context) => {
-  try {
-    const url = new URL(request.url)
-    const subject = url.searchParams.get('name') ?? 'World'
-
-    return new Response(`Hello ${subject}`)
-  } catch (error) {
-    const errorMessage = error instanceof Error ? error.message : String(error)
-    return new Response(errorMessage, {
-      status: 500,
-    })
-  }
-}
+/**
+ * Main API Handler
+ * Single entry point - all routing is configured in shared/routes/index.ts
+ */
+export default async (request: Request, _context: Context): Promise<Response> => {
+  return router.handle(request);
+};

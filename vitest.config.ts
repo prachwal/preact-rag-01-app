@@ -15,7 +15,7 @@ export default {
         '**/dist/**'
       ]
     },
-    include: ['src/**/*.{test,spec}.{ts,tsx}'],
+    include: ['src/**/*.{test,spec}.{ts,tsx}', 'netlify/**/*.{test,spec}.{ts,tsx}'],
     testTimeout: 10000,
     hookTimeout: 10000,
     env: {
