@@ -1,0 +1,147 @@
+/* API Dashboard Component Styles */
+
+.api-dashboard {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.api-dashboard__header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.api-dashboard__subtitle {
+  opacity: 0.9;
+  margin: 0.5rem 0 0 0;
+}
+
+.api-dashboard__tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  padding: 0.25rem;
+}
+
+.api-dashboard__content {
+  margin-bottom: 2rem;
+}
+
+.api-dashboard__tab-content {
+  min-height: 400px;
+}
+
+.api-dashboard__footer {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.api-dashboard__info {
+  margin-bottom: 3rem;
+}
+
+.api-info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.api-info-card {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.api-info-card h4 {
+  margin: 0 0 0.5rem 0;
+  font-size: 0.9rem;
+  opacity: 0.8;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.api-info-card code,
+.api-info-card span {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #4f46e5;
+}
+
+.api-dashboard__endpoints {
+  margin-top: 2rem;
+}
+
+.endpoints-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 1rem;
+}
+
+.endpoint-group {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.endpoint-group h4 {
+  margin: 0 0 1rem 0;
+  color: #4f46e5;
+  font-size: 1.1rem;
+}
+
+.endpoint-group ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.endpoint-group li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.endpoint-group li:last-child {
+  border-bottom: none;
+}
+
+.endpoint-group code {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9rem;
+  color: #10b981;
+}
+
+/* Responsive design for API Dashboard */
+@media (max-width: 768px) {
+  .api-dashboard {
+    padding: 1rem;
+  }
+
+  .api-dashboard__tabs {
+    flex-direction: column;
+  }
+
+  .api-info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .endpoints-list {
+    grid-template-columns: 1fr;
+  }
+
+  .endpoint-group {
+    padding: 1rem;
+  }
+}

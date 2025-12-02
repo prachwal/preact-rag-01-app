@@ -25,7 +25,9 @@
   },
   "dependencies": {
     "@netlify/functions": "^5.1.0",
-    "preact": "^10.28.0"
+    "@reduxjs/toolkit": "^2.11.0",
+    "preact": "^10.28.0",
+    "react-redux": "^9.2.0"
   },
   "devDependencies": {
     "@preact/preset-vite": "^2.10.2",

@@ -5,7 +5,7 @@ import { App } from './app';
 describe('App Component', () => {
   it('renders the main heading', () => {
     render(<App />);
-    const heading = screen.getByRole('heading', { name: /vite.*preact/i });
+    const heading = screen.getByRole('heading', { name: /preact.*rag.*app/i });
     expect(heading).toBeTruthy();
   });
 
