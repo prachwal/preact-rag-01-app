@@ -19,6 +19,13 @@ export type Middleware = (
   next: () => void
 ) => void | Promise<void>;
 
+// MiddlewareChain type for creating middleware chains
+export type MiddlewareChain = (
+  req: ExpressRequest,
+  res: ExpressResponse,
+  next: () => void
+) => void | Promise<void>;
+
 // Route definition
 interface Route {
   method: string;

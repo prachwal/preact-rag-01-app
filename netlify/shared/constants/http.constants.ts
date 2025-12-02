@@ -1,7 +1,7 @@
 /**
  * HTTP Status Codes constants
  */
-export const HTTP_STATUS = {
+export const HTTP_STATUS = Object.freeze({
   OK: 200,
   CREATED: 201,
   NO_CONTENT: 204,
@@ -10,12 +10,14 @@ export const HTTP_STATUS = {
   FORBIDDEN: 403,
   NOT_FOUND: 404,
   METHOD_NOT_ALLOWED: 405,
+  CONFLICT: 409,
+  TOO_MANY_REQUESTS: 429,
   INTERNAL_SERVER_ERROR: 500,
   SERVICE_UNAVAILABLE: 503,
-} as const;
+});
 
 // HTTP Status Code type
-export type HttpStatusCode = (typeof HTTP_STATUS)[keyof typeof HTTP_STATUS];
+export type HttpStatusCode = typeof HTTP_STATUS[keyof typeof HTTP_STATUS];
 
 // Constants for request ID generation
 export const RANDIX_BASE = 36;

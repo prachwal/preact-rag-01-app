@@ -66,13 +66,34 @@ export const createSuccessResponse = <T extends unknown = unknown>(
 });
 
 /**
+ * Safely serializes data to JSON, handling circular references
+ */
+const safeStringify = (data: unknown): string => {
+  try {
+    return JSON.stringify(data);
+  } catch {
+    // Handle circular references by replacing them with a placeholder
+    const seen = new WeakSet();
+    return JSON.stringify(data, (key, value) => {
+      if (typeof value === 'object' && value !== null) {
+        if (seen.has(value)) {
+          return '[Circular Reference]';
+        }
+        seen.add(value);
+      }
+      return value;
+    });
+  }
+};
+
+/**
  * Creates a JSON response with CORS headers
  */
 export const jsonResponse = (
   data: ApiResponse,
   status: HttpStatusCode = HTTP_STATUS.OK
 ): Response => {
-  return new Response(JSON.stringify(data), {
+  return new Response(safeStringify(data), {
     headers: {
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': '*',
