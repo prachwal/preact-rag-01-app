@@ -1,5 +1,10 @@
-import { render } from 'preact'
-import './index.css'
-import { App } from './app.tsx'
+import { render } from 'preact';
+import './index.css';
+import { App } from './app.tsx';
 
-render(<App />, document.getElementById('app')!)
+const container = document.getElementById('app');
+if (!container) {
+  throw new Error('Failed to find app container element');
+}
+
+render(<App />, container);

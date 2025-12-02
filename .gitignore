@@ -22,3 +22,18 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Local Netlify folder
+.netlify
+
+# Generated documentation
+docs/
+*.md
+
+# Generated coverage reports
+coverage/
+# Test results and reports
+test-results/
+
+# Storybook generated files
+storybook-static/
