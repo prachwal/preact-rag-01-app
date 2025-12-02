@@ -2,8 +2,8 @@
  * Users sub-router (Express-like cascading router)
  */
 
-import { createRouter, type ExpressRequest, type ExpressResponse } from '../types/router.types.ts';
-import { HTTP_STATUS } from '../constants/http.constants.ts';
+import { createRouter, type ExpressRequest, type ExpressResponse } from '../../lib/types/router.types.ts';
+import { HTTP_STATUS } from '../../lib/constants/http.constants.ts';
 
 // Create users sub-router
 export const usersRouter = createRouter();

@@ -5,7 +5,7 @@
 
 import { describe, it, expect } from 'vitest';
 import { router } from './index.ts';
-import { HTTP_STATUS } from '../constants/http.constants.ts';
+import { HTTP_STATUS } from '../../lib/constants/http.constants.ts';
 
 describe('Main API Router', () => {
   describe('Router Configuration', () => {

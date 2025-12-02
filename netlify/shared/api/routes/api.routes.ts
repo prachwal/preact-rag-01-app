@@ -2,8 +2,8 @@
  * Express-like route handlers for the API
  */
 
-import type { ExpressRequest, ExpressResponse } from '../types/router.types.ts';
-import { HTTP_STATUS } from '../constants/http.constants.ts';
+import type { ExpressRequest, ExpressResponse } from '../../lib/types/router.types.ts';
+import { HTTP_STATUS } from '../../lib/constants/http.constants.ts';
 
 /**
  * GET / - Returns greeting message

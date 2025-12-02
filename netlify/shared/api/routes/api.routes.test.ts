@@ -5,8 +5,8 @@
 
 import { describe, it, expect, beforeEach } from 'vitest';
 import { getGreeting, postData, optionsCors, healthCheck, getUserById } from './api.routes.ts';
-import type { ExpressRequest, ExpressResponse } from '../types/router.types.ts';
-import { HTTP_STATUS, type HttpStatusCode } from '../constants/http.constants.ts';
+import type { ExpressRequest, ExpressResponse } from '../../lib/types/router.types.ts';
+import { HTTP_STATUS, type HttpStatusCode } from '../../lib/constants/http.constants.ts';
 
 describe('API Route Handlers', () => {
   let mockRequest: ExpressRequest;

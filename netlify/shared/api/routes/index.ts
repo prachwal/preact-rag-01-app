@@ -2,15 +2,15 @@
  * Main API Router - Single entry point for all routes
  */
 
-import { createRouter } from '../types/router.types.ts';
+import { createRouter } from '../../lib/types/router.types.ts';
 import { getGreeting, healthCheck, optionsCors, postData } from './api.routes.ts';
 import { usersRouter } from './users.routes.ts';
-import { HTTP_STATUS } from '../constants/http.constants.ts';
+import { HTTP_STATUS } from '../../lib/constants/http.constants.ts';
 import {
   apiCors,
   createLogger,
   apiRateLimiter
-} from '../middleware/index.ts';
+} from '../../lib/middleware/index.ts';
 
 // ============================================================================
 // Create API Router - All API routes grouped under /api

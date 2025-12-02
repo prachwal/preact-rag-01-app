@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 // Comprehensive test to verify the magic number fix and API functionality
-const API_BASE = 'http://localhost:3000';
+const API_BASE = 'http://localhost:3000/api';
 
 async function comprehensiveTest() {
   console.log('🧪 Comprehensive API Test (Verifying HTTP_STATUS.OK fix)\n');
@@ -10,31 +10,31 @@ async function comprehensiveTest() {
   const tests = [
     {
       name: 'Basic API endpoint (GET /api)',
-      url: `${API_BASE}/api`,
+      url: `${API_BASE}`,
       expectedStatus: 200,
       expectedPayload: 'Hello World'
     },
     {
       name: 'API with name parameter (GET /api?name=Test)',
-      url: `${API_BASE}/api?name=Test`,
+      url: `${API_BASE}?name=Test`,
       expectedStatus: 200,
       expectedPayload: 'Hello Test'
     },
     {
       name: 'Users list (GET /api/users)',
-      url: `${API_BASE}/api/users`,
+      url: `${API_BASE}/users`,
       expectedStatus: 200,
       expectedHasUsers: true
     },
     {
       name: 'User by ID (GET /api/users/123)',
-      url: `${API_BASE}/api/users/123`,
+      url: `${API_BASE}/users/123`,
       expectedStatus: 200,
       expectedUserId: '123'
     },
     {
       name: 'Health check (GET /api/health)',
-      url: `${API_BASE}/api/health`,
+      url: `${API_BASE}/health`,
       expectedStatus: 200,
       expectedHealthy: true
     }
