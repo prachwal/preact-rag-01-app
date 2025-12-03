@@ -27,3 +27,6 @@ export { StatusIndicator } from './StatusIndicator/StatusIndicator';
 
 export { Tabs, TabPanel } from './Tabs/Tabs';
 export type { Tab } from './Tabs/Tabs';
+
+export { UserCard } from './UserCard/UserCard';
+export type { UserCardProps, UserData } from './UserCard/UserCard';

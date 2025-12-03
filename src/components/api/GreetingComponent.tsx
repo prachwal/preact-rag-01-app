@@ -24,21 +24,21 @@ export function GreetingComponent({ className = '' }: GreetingComponentProps) {
   const { data: healthData, isLoading: healthLoading, error: healthError, refetch: refetchHealth } = useGetHealthQuery();
 
   // Combine loading and error states
-  const loading = greetingLoading || postLoading || healthLoading;
-  const combinedError = greetingError || postError || healthError;
-  const greeting = greetingData?.payload?.message || '';
-  const health = healthData?.payload || null;
+  const loading = greetingLoading ?? postLoading ?? healthLoading ?? false;
+  const combinedError = greetingError ?? postError ?? healthError;
+  const greeting = greetingData?.payload?.message ?? '';
+  const health = healthData?.payload ?? null;
 
   const handleGetGreeting = () => {
     const trimmedName = name?.trim();
-    if (trimmedName) {
+    if (trimmedName && trimmedName.length > 0) {
       setSkipGreeting(false);
     }
   };
 
   const handlePostGreeting = async () => {
     const trimmedName = name?.trim();
-    if (trimmedName) {
+    if (trimmedName && trimmedName.length > 0) {
       try {
         const data = {
           name: trimmedName,
@@ -47,8 +47,8 @@ export function GreetingComponent({ className = '' }: GreetingComponentProps) {
         await postGreeting(data).unwrap();
         // Optionally refetch greeting after posting
         setSkipGreeting(false);
-      } catch (error) {
-        console.error('Failed to post greeting:', error);
+      } catch {
+        // Error handled by RTK Query
       }
     }
   };
@@ -68,14 +68,16 @@ export function GreetingComponent({ className = '' }: GreetingComponentProps) {
   };
 
   // Helper function to get error message
-  const getErrorMessage = (error: any) => {
+  /* eslint-disable @typescript-eslint/strict-boolean-expressions */
+  const getErrorMessage = (error: unknown) => {
     if (!error) return null;
     if (typeof error === 'string') return error;
-    if ('message' in error) return error.message;
-    if ('error' in error) return error.error;
-    if ('data' in error && error.data?.message) return error.data.message;
+    if (error && typeof error === 'object' && 'message' in error && typeof error.message === 'string') return error.message;
+    if (error && typeof error === 'object' && 'error' in error && typeof error.error === 'string') return error.error;
+    if (error && typeof error === 'object' && 'data' in error && error.data && typeof error.data === 'object' && 'message' in error.data && typeof error.data.message === 'string') return error.data.message;
     return 'An error occurred';
   };
+  /* eslint-enable @typescript-eslint/strict-boolean-expressions */
 
   const errorMessage = getErrorMessage(combinedError);
 
@@ -85,7 +87,7 @@ export function GreetingComponent({ className = '' }: GreetingComponentProps) {
         <h2>API Greeting & Health Check</h2>
       </div>
 
-      {errorMessage && (
+      {errorMessage != null && (
         <div className="greeting-component__error">
           <p>Error: {errorMessage}</p>
           <button type="button" onClick={handleClearError} className="btn btn--small">

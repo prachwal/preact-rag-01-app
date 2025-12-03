@@ -1,0 +1,1 @@
+export { UserCard, type UserCardProps, type UserData } from './UserCard';

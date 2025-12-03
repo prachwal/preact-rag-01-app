@@ -45,8 +45,8 @@
     color: $color-text-secondary;
 
     .status-indicator__dot {
-      background: $color-gray-500;
-      box-shadow: 0 0 0 3px color.adjust($color-gray-500, $alpha: -0.8);
+      background: $gray-500;
+      box-shadow: 0 0 0 3px color.adjust($gray-500, $alpha: -0.8);
     }
   }
 

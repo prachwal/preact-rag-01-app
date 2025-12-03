@@ -86,6 +86,11 @@
 .api-endpoints {
   display: grid;
   gap: $spacing-2;
+  grid-template-columns: 1fr;
+
+  @include respond-to('md') {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
 }
 
 .api-endpoint {
@@ -103,6 +108,8 @@
 // Responsive design
 @include respond-to-max('md') {
   .greeting-component {
+    padding: $spacing-4;
+
     &__actions {
       flex-direction: column;
       
@@ -110,5 +117,37 @@
         width: 100%;
       }
     }
+  }
+}
+
+@include respond-to-max('sm') {
+  .greeting-component {
+    padding: $spacing-3;
+
+    &__header {
+      margin-bottom: $spacing-4;
+    }
+
+    &__controls {
+      margin-bottom: $spacing-4;
+    }
+
+    &__actions {
+      gap: $spacing-1;
+    }
+
+    &__results {
+      gap: $spacing-3;
+      margin-bottom: $spacing-4;
+    }
+
+    &__info {
+      padding: $spacing-3;
+    }
+  }
+
+  .greeting-result,
+  .health-result {
+    padding: $spacing-3;
   }
 }

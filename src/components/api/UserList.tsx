@@ -3,6 +3,7 @@
  */
 
 import { useState, useEffect } from 'preact/hooks';
+import { UserCard } from '../ui';
 import {
   useAppDispatch,
   useAppSelector,
@@ -168,45 +169,40 @@ export function UserList({ className = '' }: UserListProps) {
           {users.length === 0 ? (
             <p>No users found. Create your first user!</p>
           ) : (
-            <ul className="users">
+            <div className="users-grid">
               {users.map((user) => (
-                <li
+                <UserCard
                   key={user.id}
-                  className={`user-item ${
-                    selectedUser?.id === user.id ? 'user-item--selected' : ''
-                  }`}
-                >
-                  <div className="user-item__info">
-                    <span className="user-item__name">{user.name}</span>
-                    <span className="user-item__email">{user.email}</span>
-                    <span className="user-item__id">ID: {user.id}</span>
-                  </div>
-                  <div className="user-item__actions">
-                    <button
-                      type="button"
-                      onClick={() => handleSelectUser(user)}
-                      className="btn btn--small btn--info"
-                    >
-                      Select
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => setEditingUser(user)}
-                      className="btn btn--small btn--warning"
-                    >
-                      Edit
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => handleDeleteUser(user.id)}
-                      className="btn btn--small btn--danger"
-                    >
-                      Delete
-                    </button>
-                  </div>
-                </li>
+                  user={user}
+                  className={selectedUser?.id === user.id ? 'user-card--selected' : ''}
+                  actions={
+                    <>
+                      <button
+                        type="button"
+                        onClick={() => handleSelectUser(user)}
+                        className="btn btn--small btn--info"
+                      >
+                        Select
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => setEditingUser(user)}
+                        className="btn btn--small btn--warning"
+                      >
+                        Edit
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => handleDeleteUser(user.id)}
+                        className="btn btn--small btn--danger"
+                      >
+                        Delete
+                      </button>
+                    </>
+                  }
+                />
               ))}
-            </ul>
+            </div>
           )}
         </div>
 

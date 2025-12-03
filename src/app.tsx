@@ -56,10 +56,10 @@ export function App() {
             </a>
           </div>
           <h1 class="app-header__title">
-            Preact RAG App with Redux & API
+            Preact RAG App
           </h1>
           <p class="app-header__subtitle">
-            Redux Toolkit integration with API endpoints
+            Redux & API Dashboard
           </p>
         </Container>
       </header>

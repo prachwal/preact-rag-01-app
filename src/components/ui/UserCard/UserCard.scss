@@ -1,0 +1,55 @@
+@use '../../../styles/abstracts/variables' as *;
+@use '../../../styles/abstracts/mixins' as *;
+
+.user-card {
+  width: 100%;
+  max-width: 400px;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-4;
+  }
+
+  &__info {
+    text-align: center;
+  }
+
+  &__name {
+    font-size: $font-size-xl;
+    font-weight: $font-weight-semibold;
+    color: $color-text-primary;
+    margin: 0 0 $spacing-2 0;
+  }
+
+  &__email {
+    font-size: $font-size-base;
+    color: $color-text-secondary;
+    margin: 0 0 $spacing-1 0;
+  }
+
+  &__id {
+    font-size: $font-size-sm;
+    color: $color-text-muted;
+    font-family: $font-family-mono;
+    margin: 0;
+  }
+
+  &__actions {
+    display: flex;
+    gap: $spacing-2;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  // Responsive design
+  @include respond-to-max('sm') {
+    &__name {
+      font-size: $font-size-lg;
+    }
+
+    &__actions {
+      gap: $spacing-1;
+    }
+  }
+}

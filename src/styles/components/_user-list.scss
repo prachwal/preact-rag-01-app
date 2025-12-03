@@ -85,59 +85,20 @@
   margin-top: $spacing-5;
 }
 
-// Users list
-.users {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+// Users grid
+.users-grid {
   display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: $spacing-4;
+  margin-top: $spacing-5;
 }
 
-.user-item {
-  background: $color-bg-light;
-  border-radius: $radius-md;
-  padding: $spacing-4;
-  @include flex-between;
-  @include transition-base;
-  border: 1px solid $glass-border;
-  color: $color-text-on-light-primary;
-
-  &:hover {
-    background: rgba(255, 255, 255, 0.15);
-    transform: translateY(-2px);
-    color: $color-text-on-light-primary;
-  }
-
+.user-card {
   &--selected {
-    border-color: $color-primary;
-    background: rgba($color-primary, 0.2);
-    color: $color-text-on-light-primary;
-  }
-
-  &__info {
-    @include flex-column;
-    gap: $spacing-1;
-  }
-
-  &__name {
-    font-weight: $font-weight-semibold;
-    font-size: $font-size-lg;
-  }
-
-  &__email {
-    opacity: 0.8;
-    font-size: $font-size-base;
-  }
-
-  &__id {
-    opacity: 0.6;
-    font-size: $font-size-sm;
-  }
-
-  &__actions {
-    display: flex;
-    gap: $spacing-2;
+    .card {
+      border-color: $color-primary;
+      background: rgba($color-primary, 0.2);
+    }
   }
 }
 
@@ -172,13 +133,7 @@
     }
   }
 
-  .user-item {
-    flex-direction: column;
-    gap: $spacing-4;
-    align-items: stretch;
-
-    &__actions {
-      justify-content: center;
-    }
+  .users-grid {
+    grid-template-columns: 1fr;
   }
 }

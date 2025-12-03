@@ -8,16 +8,30 @@
   &--small {
     padding: $spacing-1 $spacing-3;
     font-size: $font-size-sm;
+
+    @include respond-to-max('sm') {
+      padding: $spacing-1 $spacing-2;
+      font-size: $font-size-xs;
+    }
   }
 
   &--medium {
     padding: $spacing-2 $spacing-4;
     font-size: $font-size-base;
+
+    @include respond-to-max('sm') {
+      padding: $spacing-1 $spacing-3;
+    }
   }
 
   &--large {
     padding: $spacing-3 $spacing-5;
     font-size: $font-size-lg;
+
+    @include respond-to-max('sm') {
+      padding: $spacing-2 $spacing-4;
+      font-size: $font-size-base;
+    }
   }
 
   // Color variants
@@ -38,7 +52,7 @@
   }
 
   &--warning {
-    @include button-variant($color-warning, $color-warning-dark, $color-gray-900);
+    @include button-variant($color-warning, $color-warning-dark, $gray-900);
   }
 
   &--info {

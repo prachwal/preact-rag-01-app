@@ -35,4 +35,9 @@
     padding-left: $spacing-3;
     padding-right: $spacing-3;
   }
+
+  @include respond-to-max('sm') {
+    padding-left: $spacing-2;
+    padding-right: $spacing-2;
+  }
 }

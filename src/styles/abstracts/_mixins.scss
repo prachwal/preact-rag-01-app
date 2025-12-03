@@ -124,11 +124,16 @@
   // WCAG AA Focus indicators
   @include focus-ring;
   
+  @include respond-to-max('sm') {
+    padding: $spacing-1 $spacing-3;
+    font-size: $font-size-sm;
+  }
+  
   &:disabled {
     opacity: 0.6;  // Increased from 0.5 for better visibility
     cursor: not-allowed;
-    background-color: $color-gray-600;
-    color: $color-gray-400;
+    background-color: $gray-600;
+    color: $gray-400;
   }
 }
 
@@ -175,6 +180,10 @@
   padding: $spacing-6;
   border: 1px solid $glass-border;
   color: $color-text-on-light-primary; // Dark text for light backgrounds
+
+  @include respond-to-max('sm') {
+    padding: $spacing-4;
+  }
 }
 
 @mixin card-glass {
@@ -182,6 +191,10 @@
   border-radius: $radius-lg;
   padding: $spacing-6;
   color: $color-text-primary; // White text for glass/dark backgrounds
+
+  @include respond-to-max('sm') {
+    padding: $spacing-4;
+  }
 }
 
 @mixin card-elevated {
@@ -199,7 +212,7 @@
 // Gradient Backgrounds
 // ---------------------------------------------
 @mixin gradient-bg($start-color: $color-primary, $end-color: $color-secondary, $direction: 135deg) {
-  background: linear-gradient($direction, $start-color 0%, $end-color 100%);
+  background: #0a0e27;
 }
 
 @mixin gradient-text($start-color: $color-primary, $end-color: $color-secondary) {

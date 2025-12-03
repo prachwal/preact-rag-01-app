@@ -9,18 +9,19 @@
   grid-area: header;
   @include glass-effect;
   border-bottom: 1px solid $glass-border;
-  padding: $spacing-2 0;
+  padding: $spacing-1 0;
   text-align: center;
 
   &__logos {
     @include flex-center;
-    gap: $spacing-4;
-    margin-bottom: $spacing-3;
+    gap: $spacing-2;
+    margin-bottom: $spacing-1;
   }
 
   &__title {
     margin: 0;
-    @include text-heading-1;
+    font-size: $font-size-2xl;
+    font-weight: $font-weight-bold;
     text-shadow: $shadow-text;
     background: linear-gradient(135deg, $color-primary 0%, $color-secondary 100%);
     -webkit-background-clip: text;
@@ -29,19 +30,34 @@
   }
 
   &__subtitle {
-    margin: $spacing-2 0 0 0;
-    font-size: $font-size-lg;
-    opacity: 0.9;
+    margin: $spacing-1 0 0 0;
+    font-size: $font-size-sm;
+    opacity: 0.8;
   }
 
   @include respond-to-max('md') {
     &__logos {
-      flex-direction: column;
-      gap: $spacing-4;
+      gap: $spacing-2;
     }
 
     &__title {
-      font-size: $font-size-3xl;
+      font-size: $font-size-xl;
+    }
+  }
+
+  @include respond-to-max('sm') {
+    padding: $spacing-2 0;
+
+    &__logos {
+      gap: $spacing-1;
+    }
+
+    &__title {
+      font-size: $font-size-lg;
+    }
+
+    &__subtitle {
+      font-size: $font-size-xs;
     }
   }
 }

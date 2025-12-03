@@ -11,7 +11,7 @@
   color: $color-text-primary;
   font-family: $font-family-primary;
 
-  // Nowy Grid Layout
+  // Grid Layout - mobile first
   display: grid;
   grid-template-rows: auto auto 1fr auto;
   grid-template-areas:
@@ -19,34 +19,54 @@
     "nav"
     "main"
     "footer";
+  
+  padding: 0;
+  gap: 0;
 
-  // Opcjonalnie dla większych ekranów
-  @include respond-to('lg') {
-    grid-template-columns: 250px 1fr;
-    grid-template-rows: auto 1fr auto;
-    grid-template-areas:
-      "header header"
-      "nav main"
-      "footer footer";
+  main {
+    grid-area: main;
+    padding: $spacing-4;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+
+    @include respond-to('lg') {
+      padding: $spacing-6;
+    }
+
+    @include respond-to-max('sm') {
+      padding: $spacing-2;
+    }
   }
 }
 
 .demo-section {
   text-align: center;
   @include card-glass;
-  padding: $spacing-8;
+  padding: $spacing-6;
+  max-width: 800px;
+  margin: 0 auto;
+
+  @include respond-to-max('sm') {
+    padding: $spacing-3;
+  }
 
   h2 {
-    margin-bottom: $spacing-6;
+    margin-bottom: $spacing-4;
   }
 
   p {
-    margin: $spacing-4 0;
+    margin: $spacing-3 0;
+  }
+
+  @include respond-to('lg') {
+    padding: $spacing-8;
   }
 }
 
 .api-section {
   width: 100%;
+  max-width: 100%;
 }
 
 // ---------------------------------------------

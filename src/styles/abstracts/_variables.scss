@@ -66,74 +66,128 @@ $violet-700: #7c3aed;
 $violet-800: #6b21a8;
 $violet-900: #581c87;
 
+// Gray Palette (Neutrals)
+$gray-50: #f9fafb;       // 18.1:1 contrast with dark bg
+$gray-100: #f3f4f6;     // 16.7:1
+$gray-200: #e5e7eb;     // 13.3:1
+$gray-300: #d1d5db;     // 10.8:1
+$gray-400: #9ca3af;     // 6.8:1
+$gray-500: #6b7280;     // 4.5:1 ✓ WCAG AA compliant
+$gray-600: #4b5563;     // 3.3:1 (use for large text only)
+$gray-700: #374151;     // 2.6:1 (not WCAG AA compliant)
+$gray-800: #1f2937;     // 1.9:1 (not compliant)
+$gray-900: #111827;     // Background
+
 // Primary Colors - High contrast friendly
-$color-primary: $blue-600;        // Blue-600 - better contrast than original
-$color-primary-light: $blue-500;  // Blue-500
-$color-primary-dark: $blue-700;   // Blue-700
-$color-primary-darker: $blue-800; // Blue-800
+$primary: $blue-600;        // Blue-600 - better contrast than original
+$primary-light: $blue-500;  // Blue-500
+$primary-dark: $blue-700;   // Blue-700
+$primary-darker: $blue-800; // Blue-800
+
+// Legacy aliases for compatibility
+$color-primary: $primary;
+$color-primary-light: $primary-light;
+$color-primary-dark: $primary-dark;
+$color-primary-darker: $primary-darker;
 
 // Secondary Colors - Purple with good contrast
-$color-secondary: $violet-600;      // Violet-600
-$color-secondary-light: $violet-500; // Violet-500
-$color-secondary-dark: $violet-700;  // Violet-700
+$secondary: $violet-600;      // Violet-600
+$secondary-light: $violet-500; // Violet-500
+$secondary-dark: $violet-700;  // Violet-700
+
+// Legacy aliases
+$color-secondary: $secondary;
+$color-secondary-light: $secondary-light;
+$color-secondary-dark: $secondary-dark;
 
 // Accent Colors - Red with WCAG compliance
-$color-accent: $red-600;         // Red-600 - better contrast
-$color-accent-light: $red-500;   // Red-500
-$color-accent-dark: $red-700;    // Red-700
+$accent: $red-600;         // Red-600 - better contrast
+$accent-light: $red-500;   // Red-500
+$accent-dark: $red-700;    // Red-700
+
+// Legacy aliases
+$color-accent: $accent;
+$color-accent-light: $accent-light;
+$color-accent-dark: $accent-dark;
 
 // Semantic Colors - WCAG AA compliant
-$color-success: $emerald-600;        // Emerald-600 - better contrast
-$color-success-light: $emerald-500;  // Emerald-500
-$color-success-dark: $emerald-700;   // Emerald-700
+$success: $emerald-600;        // Emerald-600 - better contrast
+$success-light: $emerald-500;  // Emerald-500
+$success-dark: $emerald-700;   // Emerald-700
 
-$color-danger: $red-600;         // Red-600
-$color-danger-light: $red-500;   // Red-500
-$color-danger-dark: $red-700;    // Red-700
+$danger: $red-600;         // Red-600
+$danger-light: $red-500;   // Red-500
+$danger-dark: $red-700;    // Red-700
 
-$color-warning: $amber-600;        // Amber-600 - better contrast
-$color-warning-light: $amber-500;  // Amber-500
-$color-warning-dark: $amber-700;   // Amber-700
+$warning: $amber-600;        // Amber-600 - better contrast
+$warning-light: $amber-500;  // Amber-500
+$warning-dark: $amber-700;   // Amber-700
 
-$color-info: $blue-600;           // Blue-600
-$color-info-light: $blue-500;     // Blue-500
-$color-info-dark: $blue-700;      // Blue-700
+$info: $blue-600;           // Blue-600
+$info-light: $blue-500;     // Blue-500
+$info-dark: $blue-700;      // Blue-700
+
+// Legacy aliases
+$color-success: $success;
+$color-success-light: $success-light;
+$color-success-dark: $success-dark;
+$color-danger: $danger;
+$color-danger-light: $danger-light;
+$color-danger-dark: $danger-dark;
+$color-warning: $warning;
+$color-warning-light: $warning-light;
+$color-warning-dark: $warning-dark;
+$color-info: $info;
+$color-info-light: $info-light;
+$color-info-dark: $info-dark;
 
 // Neutral Colors - Enhanced for accessibility
-$color-white: $blue-50;         // Using blue-50 as white equivalent
-$color-black: $blue-900;        // Using blue-900 as black equivalent
+$white: #ffffff;
+$black: #000000;
 
-$color-gray-50: $blue-50;       // 18.1:1 contrast with dark bg
-$color-gray-100: $blue-100;     // 16.7:1
-$color-gray-200: $blue-200;     // 13.3:1
-$color-gray-300: $blue-300;     // 10.8:1
-$color-gray-400: $blue-400;     // 6.8:1
-$color-gray-500: $blue-500;     // 4.5:1 ✓ WCAG AA compliant
-$color-gray-600: $blue-600;     // 3.3:1 (use for large text only)
-$color-gray-700: $blue-700;     // 2.6:1 (not WCAG AA compliant)
-$color-gray-800: $blue-800;     // 1.9:1 (not compliant)
-$color-gray-900: $blue-900;     // Background
+// Legacy aliases
+$color-white: $white;
+$color-black: $black;
 
 // Background Colors - WCAG compliant - Unified Dark Theme
-$color-bg-primary: linear-gradient(135deg, $color-primary 0%, $color-secondary 100%);
-$color-bg-light: rgba(0, 0, 0, 0.3);     // Dark glass-like background for consistency
-$color-bg-dark: rgba(0, 0, 0, 0.85);     // Darker background
-$color-bg-glass: rgba(0, 0, 0, 0.2);     // Dark glass effect
-$color-bg-semi-transparent: rgba(0, 0, 0, 0.1);
-$color-bg-overlay: rgba(0, 0, 0, 0.6);        // Darker for better contrast
+$bg-primary: #0a0e27;     // Ciemne tło główne
+$bg-light: rgba(255, 255, 255, 0.05);     // Subtelne jasne tło
+$bg-dark: rgba(0, 0, 0, 0.4);     // Ciemniejsze tło
+$bg-glass: rgba(255, 255, 255, 0.08);     // Glass effect
+$bg-semi-transparent: rgba(255, 255, 255, 0.03);
+$bg-overlay: rgba(0, 0, 0, 0.7);        // Overlay
+
+// Legacy aliases for compatibility
+$color-bg-primary: $bg-primary;
+$color-bg-light: $bg-light;
+$color-bg-dark: $bg-dark;
+$color-bg-glass: $bg-glass;
+$color-bg-semi-transparent: $bg-semi-transparent;
+$color-bg-overlay: $bg-overlay;
 
 // Text Colors - WCAG 2 AA Compliant
-$color-text-primary: $color-white;                    // 21.0:1 ✓ (for dark backgrounds)
-$color-text-secondary: $color-gray-100;              // 16.7:1 ✓ (for dark backgrounds)
-$color-text-muted: $color-gray-300;                  // 10.8:1 ✓ (use for large text on dark bg)
-$color-text-disabled: $color-gray-500;               // 4.5:1 ✓ (minimum for normal text)
-$color-text-inverse: $blue-900;                      // High contrast on light backgrounds
+$text-primary: $white;                    // 21.0:1 ✓ (for dark backgrounds)
+$text-secondary: $gray-100;              // 16.7:1 ✓ (for dark backgrounds)
+$text-muted: $gray-300;                  // 10.8:1 ✓ (use for large text on dark bg)
+$text-disabled: $gray-500;               // 4.5:1 ✓ (minimum for normal text)
+$text-inverse: $gray-900;                // High contrast on light backgrounds
 
 // Text Colors for Light Backgrounds - WCAG AA compliant
-$color-text-on-light-primary: $blue-900;             // Dark text on light backgrounds
-$color-text-on-light-secondary: $blue-700;           // Medium dark text on light backgrounds
-$color-text-on-light-muted: $blue-500;               // Light gray text on light backgrounds
-$color-text-on-light-disabled: $blue-400;            // Disabled text on light backgrounds
+$text-on-light-primary: $gray-900;             // Dark text on light backgrounds
+$text-on-light-secondary: $gray-700;           // Medium dark text on light backgrounds
+$text-on-light-muted: $gray-500;               // Light gray text on light backgrounds
+$text-on-light-disabled: $gray-400;            // Disabled text on light backgrounds
+
+// Legacy aliases
+$color-text-primary: $text-primary;
+$color-text-secondary: $text-secondary;
+$color-text-muted: $text-muted;
+$color-text-disabled: $text-disabled;
+$color-text-inverse: $text-inverse;
+$color-text-on-light-primary: $text-on-light-primary;
+$color-text-on-light-secondary: $text-on-light-secondary;
+$color-text-on-light-muted: $text-on-light-muted;
+$color-text-on-light-disabled: $text-on-light-disabled;
 
 // Focus and Interactive States - WCAG AA compliant
 $color-focus: $blue-500;                  // Blue-500 for focus rings

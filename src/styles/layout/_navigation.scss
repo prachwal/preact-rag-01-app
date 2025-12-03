@@ -10,9 +10,9 @@
   position: sticky;
   top: 0;
   z-index: $z-index-sticky;
-  background: rgba(0, 0, 0, 0.85);
+  background: rgba(10, 14, 39, 0.95);
   backdrop-filter: blur(12px);
-  padding: $spacing-3 0;
+  padding: $spacing-2 0;
   border-bottom: 1px solid $glass-border;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }

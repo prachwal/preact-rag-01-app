@@ -172,6 +172,7 @@ describe('HttpClient', () => {
     it('should throw custom error for 404 in development', async () => {
       // Mock import.meta.env.DEV
       const originalEnv = import.meta.env.DEV;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       (import.meta as any).env = { ...import.meta.env, DEV: true };
 
       mockFetch.mockResolvedValueOnce({
@@ -185,6 +186,7 @@ describe('HttpClient', () => {
       );
 
       // Restore
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       (import.meta as any).env = { ...import.meta.env, DEV: originalEnv };
     });
 
