@@ -5,19 +5,19 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { useDispatch, useSelector, type TypedUseSelectorHook } from 'react-redux';
 import usersReducer from './slices/usersSlice';
-import apiReducer from './slices/apiSlice';
+import { apiSlice } from './slices/apiSlice';
 
 export const store = configureStore({
   reducer: {
     users: usersReducer,
-    api: apiReducer,
+    [apiSlice.reducerPath]: apiSlice.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
         ignoredActions: ['persist/PERSIST'],
       },
-    }),
+    }).concat(apiSlice.middleware),
   devTools: import.meta.env.DEV,
 });
 

@@ -21,9 +21,9 @@ export {
 } from './slices/usersSlice';
 
 export {
-  fetchGreeting,
-  postGreeting,
-  checkHealth,
-  clearError as clearApiError,
-  clearGreeting,
+  useGetGreetingQuery,
+  usePostGreetingMutation,
+  useGetHealthQuery,
+  useGetUsersQuery,
+  useGetUserQuery,
 } from './slices/apiSlice';

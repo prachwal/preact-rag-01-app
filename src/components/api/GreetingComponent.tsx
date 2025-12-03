@@ -3,48 +3,81 @@
  */
 
 import { useState } from 'preact/hooks';
-import { useAppDispatch, useAppSelector, fetchGreeting, postGreeting, checkHealth, clearError, clearGreeting } from '../../store';
+import { useGetGreetingQuery, usePostGreetingMutation, useGetHealthQuery } from '../../store/slices/apiSlice';
 
 interface GreetingComponentProps {
   className?: string;
 }
 
 export function GreetingComponent({ className = '' }: GreetingComponentProps) {
-  const dispatch = useAppDispatch();
-  const { greeting, health, loading, error } = useAppSelector((state) => state.api);
-  
   const [name, setName] = useState('');
+  const [skipGreeting, setSkipGreeting] = useState(true);
+
+  // RTK Query hooks
+  const { data: greetingData, isLoading: greetingLoading, error: greetingError } = useGetGreetingQuery(
+    name?.trim() || undefined,
+    { skip: skipGreeting || !name?.trim() }
+  );
+
+  const [postGreeting, { isLoading: postLoading, error: postError }] = usePostGreetingMutation();
+
+  const { data: healthData, isLoading: healthLoading, error: healthError, refetch: refetchHealth } = useGetHealthQuery();
+
+  // Combine loading and error states
+  const loading = greetingLoading || postLoading || healthLoading;
+  const combinedError = greetingError || postError || healthError;
+  const greeting = greetingData?.payload?.message || '';
+  const health = healthData?.payload || null;
 
   const handleGetGreeting = () => {
     const trimmedName = name?.trim();
     if (trimmedName) {
-      dispatch(fetchGreeting(trimmedName));
+      setSkipGreeting(false);
     }
   };
 
-  const handlePostGreeting = () => {
+  const handlePostGreeting = async () => {
     const trimmedName = name?.trim();
     if (trimmedName) {
-      const data = {
-        name: trimmedName,
-        timestamp: new Date().toISOString(),
-      };
-      dispatch(postGreeting(data));
+      try {
+        const data = {
+          name: trimmedName,
+          timestamp: new Date().toISOString(),
+        };
+        await postGreeting(data).unwrap();
+        // Optionally refetch greeting after posting
+        setSkipGreeting(false);
+      } catch (error) {
+        console.error('Failed to post greeting:', error);
+      }
     }
   };
 
   const handleHealthCheck = () => {
-    dispatch(checkHealth());
+    refetchHealth();
   };
 
   const handleClearGreeting = () => {
-    dispatch(clearGreeting());
+    setSkipGreeting(true);
     setName('');
   };
 
   const handleClearError = () => {
-    dispatch(clearError());
+    // RTK Query handles errors automatically, but we can clear by resetting state
+    setSkipGreeting(true);
   };
+
+  // Helper function to get error message
+  const getErrorMessage = (error: any) => {
+    if (!error) return null;
+    if (typeof error === 'string') return error;
+    if ('message' in error) return error.message;
+    if ('error' in error) return error.error;
+    if ('data' in error && error.data?.message) return error.data.message;
+    return 'An error occurred';
+  };
+
+  const errorMessage = getErrorMessage(combinedError);
 
   return (
     <div className={`greeting-component ${className}`}>
@@ -52,9 +85,9 @@ export function GreetingComponent({ className = '' }: GreetingComponentProps) {
         <h2>API Greeting & Health Check</h2>
       </div>
 
-      {error != null && error !== '' && (
+      {errorMessage && (
         <div className="greeting-component__error">
-          <p>Error: {error}</p>
+          <p>Error: {errorMessage}</p>
           <button type="button" onClick={handleClearError} className="btn btn--small">
             Dismiss
           </button>

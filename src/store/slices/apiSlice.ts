@@ -1,122 +1,82 @@
 /**
- * API slice for Redux state management (greeting, health, etc.)
+ * API slice using RTK Query for Redux state management
  */
 
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import type { PayloadAction } from '@reduxjs/toolkit';
-import { apiService, type HealthResponse, type GreetingResponse } from '../../services/api';
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import type { HealthResponse, GreetingResponse } from '../../services/api';
 
-export interface ApiState {
-  greeting: string;
-  health: HealthResponse | null;
-  loading: boolean;
-  error: string | null;
+// Define the API response wrapper
+interface ApiResponseWrapper<T> {
+  status: string;
+  payload: T;
+  metadata: {
+    timestamp: string;
+    requestId: string;
+  };
 }
 
-const initialState: ApiState = {
-  greeting: '',
-  health: null,
-  loading: false,
-  error: null,
-};
-
-/**
- * Async thunks for API operations
- */
-export const fetchGreeting = createAsyncThunk<GreetingResponse, string | undefined, { rejectValue: string }>(
-  'api/fetchGreeting',
-  async (name, { rejectWithValue }) => {
-    try {
-      const response = await apiService.getGreeting(name);
-      return response.payload;
-    } catch (error) {
-      const message = error instanceof Error ? error.message : 'Failed to fetch greeting';
-      return rejectWithValue(message);
-    }
-  }
-);
-
-export const postGreeting = createAsyncThunk<unknown, Record<string, unknown>, { rejectValue: string }>(
-  'api/postGreeting',
-  async (data, { rejectWithValue }) => {
-    try {
-      const response = await apiService.postGreeting(data);
-      return response.payload;
-    } catch (error) {
-      const message = error instanceof Error ? error.message : 'Failed to post greeting';
-      return rejectWithValue(message);
-    }
-  }
-);
-
-export const checkHealth = createAsyncThunk<HealthResponse, void, { rejectValue: string }>(
-  'api/checkHealth',
-  async (_, { rejectWithValue }) => {
-    try {
-      const response = await apiService.healthCheck();
-      return response.payload;
-    } catch (error) {
-      const message = error instanceof Error ? error.message : 'Failed to check health';
-      return rejectWithValue(message);
-    }
-  }
-);
-
-const apiSlice = createSlice({
-  name: 'api',
-  initialState,
-  reducers: {
-    clearError: (state) => {
-      state.error = null;
+// Create the API slice
+export const apiSlice = createApi({
+  reducerPath: 'api',
+  baseQuery: fetchBaseQuery({
+    baseUrl: '/api',
+    prepareHeaders: (headers) => {
+      // Add any default headers here
+      headers.set('Content-Type', 'application/json');
+      return headers;
     },
-    clearGreeting: (state) => {
-      state.greeting = '';
-    },
-  },
-  extraReducers: (builder) => {
-    builder
-      // Fetch greeting
-      .addCase(fetchGreeting.pending, (state) => {
-        state.loading = true;
-        state.error = null;
-      })
-      .addCase(fetchGreeting.fulfilled, (state, action: PayloadAction<GreetingResponse>) => {
-        state.loading = false;
-        state.greeting = action.payload.message;
-      })
-      .addCase(fetchGreeting.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.payload ?? 'Failed to fetch greeting';
-      })
-      
-      // Post greeting
-      .addCase(postGreeting.pending, (state) => {
-        state.loading = true;
-        state.error = null;
-      })
-      .addCase(postGreeting.fulfilled, (state) => {
-        state.loading = false;
-      })
-      .addCase(postGreeting.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.payload ?? 'Failed to post greeting';
-      })
-      
-      // Health check
-      .addCase(checkHealth.pending, (state) => {
-        state.loading = true;
-        state.error = null;
-      })
-      .addCase(checkHealth.fulfilled, (state, action: PayloadAction<HealthResponse>) => {
-        state.loading = false;
-        state.health = action.payload;
-      })
-      .addCase(checkHealth.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.payload ?? 'Failed to check health';
-      });
-  },
+  }),
+  tagTypes: ['Greeting', 'Health', 'Users'],
+  endpoints: (builder) => ({
+    // Greeting endpoints
+    getGreeting: builder.query<ApiResponseWrapper<GreetingResponse>, string | undefined>({
+      query: (name) => {
+        const trimmedName = name?.trim();
+        const params = trimmedName != null && trimmedName !== '' ? { name: trimmedName } : undefined;
+        return {
+          url: '',
+          params,
+        };
+      },
+      providesTags: ['Greeting'],
+    }),
+
+    postGreeting: builder.mutation<ApiResponseWrapper<unknown>, Record<string, unknown>>({
+      query: (data) => ({
+        url: '',
+        method: 'POST',
+        body: data,
+      }),
+      invalidatesTags: ['Greeting'],
+    }),
+
+    // Health check endpoint
+    getHealth: builder.query<ApiResponseWrapper<HealthResponse>, void>({
+      query: () => 'health',
+      providesTags: ['Health'],
+    }),
+
+    // Users endpoints
+    getUsers: builder.query<ApiResponseWrapper<{ users: Array<{ id: string; name: string; email: string }> }>, void>({
+      query: () => 'users',
+      providesTags: ['Users'],
+    }),
+
+    getUser: builder.query<ApiResponseWrapper<{ id: string; name: string; email: string }>, string>({
+      query: (id) => `users/${id}`,
+      providesTags: (_result, _error, id) => [{ type: 'Users', id }],
+    }),
+  }),
 });
 
-export const { clearError, clearGreeting } = apiSlice.actions;
+// Export hooks for usage in components
+export const {
+  useGetGreetingQuery,
+  usePostGreetingMutation,
+  useGetHealthQuery,
+  useGetUsersQuery,
+  useGetUserQuery,
+} = apiSlice;
+
+// Export the reducer
 export default apiSlice.reducer;
