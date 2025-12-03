@@ -6,9 +6,15 @@
 @use '../abstracts/mixins' as *;
 
 .app-nav {
-  background: rgba(255, 255, 255, 0.05);
+  grid-area: nav;
+  position: sticky;
+  top: 0;
+  z-index: $z-index-sticky;
+  background: rgba(0, 0, 0, 0.85); // Ciemniejsze tło dla lepszej widoczności
+  backdrop-filter: blur(12px); // Większe blur
   padding: 0;
   border-bottom: 1px solid $glass-border;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .nav-tabs {

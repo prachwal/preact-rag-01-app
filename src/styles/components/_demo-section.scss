@@ -19,7 +19,7 @@
   }
 
   &__content {
-    max-width: 600px;
+    max-width: $max-width-content;
     margin: 0 auto;
   }
 
@@ -43,7 +43,7 @@
   }
 
   code {
-    background: rgba(255, 255, 255, 0.1);
+    background: $color-bg-light;
     padding: $spacing-1 $spacing-2;
     border-radius: $radius-sm;
     font-family: $font-family-mono;

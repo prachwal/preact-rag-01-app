@@ -21,7 +21,9 @@
     "test:coverage": "NO_COLOR=1 vitest run --coverage --reporter=verbose",
     "docs:generate": "typedoc",
     "docs:serve": "npx http-server docs -p 4000",
-    "docs:clean": "rimraf docs"
+    "docs:clean": "rimraf docs",
+    "merge:src": "node scripts/merge-folder.js ./src",
+    "merge:netlify": "node scripts/merge-folder.js ./netlify"
   },
   "dependencies": {
     "@netlify/functions": "^5.1.0",

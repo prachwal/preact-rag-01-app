@@ -6,18 +6,25 @@
 @use '../abstracts/mixins' as *;
 
 .app-footer {
-  background: rgba(0, 0, 0, 0.2);
-  padding: $spacing-6 0;
+  grid-area: footer;
+  background: $color-bg-dark;
+  padding: $spacing-4 0; // Zmniejszone z $spacing-6
   border-top: 1px solid $glass-border;
 
   &__content {
     max-width: $max-width-container;
     margin: 0 auto;
-    padding: 0 $spacing-6;
+    padding: 0 $container-padding;
     text-align: center;
 
+    // Inline display dla kompaktowości
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: $spacing-3;
+
     p {
-      margin: $spacing-2 0;
+      margin: 0;
       font-size: $font-size-sm;
       opacity: 0.8;
     }

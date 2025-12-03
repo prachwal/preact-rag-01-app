@@ -16,7 +16,7 @@
   gap: $spacing-2;
 
   &:hover {
-    background: rgba(255, 255, 255, 0.1);
+    background: $color-bg-light;
   }
 
   &--active {

@@ -6,7 +6,7 @@
 @use '../abstracts/mixins' as *;
 
 .user-list {
-  background: rgba(255, 255, 255, 0.05);
+  background: $color-bg-semi-transparent;
   border-radius: $radius-md;
   padding: $spacing-5;
   border: 1px solid $glass-border;
@@ -63,7 +63,7 @@
     padding: $spacing-3;
     border: 1px solid $glass-border;
     border-radius: $radius-base;
-    background: rgba(255, 255, 255, 0.1);
+    background: $color-bg-light;
     color: $color-text-primary;
     font-size: $font-size-base;
     @include transition-base;
@@ -95,7 +95,7 @@
 }
 
 .user-item {
-  background: rgba(255, 255, 255, 0.1);
+  background: $color-bg-light;
   border-radius: $radius-md;
   padding: $spacing-4;
   @include flex-between;

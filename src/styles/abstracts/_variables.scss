@@ -59,6 +59,8 @@ $color-bg-primary: linear-gradient(135deg, $color-primary 0%, $color-secondary 1
 $color-bg-light: rgba(255, 255, 255, 0.1);
 $color-bg-dark: rgba(0, 0, 0, 0.2);
 $color-bg-glass: rgba(255, 255, 255, 0.1);
+$color-bg-semi-transparent: rgba(255, 255, 255, 0.05);
+$color-bg-overlay: rgba(0, 0, 0, 0.1);
 
 // Text Colors
 $color-text-primary: $color-white;
@@ -67,34 +69,36 @@ $color-text-muted: rgba(255, 255, 255, 0.6);
 $color-text-inverse: $color-gray-900;
 
 // ---------------------------------------------
-// Spacing Scale (8px base)
+// Spacing Scale (8px base - responsive with clamp)
 // ---------------------------------------------
 $spacing-0: 0;
-$spacing-1: 0.25rem;   // 4px
-$spacing-2: 0.5rem;    // 8px
-$spacing-3: 0.75rem;   // 12px
-$spacing-4: 1rem;      // 16px
-$spacing-5: 1.5rem;    // 24px
-$spacing-6: 2rem;      // 32px
-$spacing-8: 3rem;      // 48px
-$spacing-10: 4rem;     // 64px
-$spacing-12: 6rem;     // 96px
+$spacing-1: clamp(0.25rem, 0.5vw, 0.5rem);    // 4px → 8px
+$spacing-2: clamp(0.5rem, 1vw, 0.75rem);      // 8px → 12px
+$spacing-3: clamp(0.75rem, 1.5vw, 1rem);      // 12px → 16px
+$spacing-4: clamp(1rem, 2vw, 1.5rem);         // 16px → 24px
+$spacing-5: clamp(1.5rem, 3vw, 2rem);         // 24px → 32px
+$spacing-6: clamp(2rem, 4vw, 2.5rem);         // 32px → 40px
+$spacing-8: clamp(3rem, 6vw, 4rem);           // 48px → 64px
+$spacing-10: clamp(4rem, 8vw, 5rem);          // 64px → 80px
+$spacing-12: clamp(6rem, 10vw, 7rem);         // 96px → 112px
 
 // ---------------------------------------------
-// Typography
+// Typography (Responsive with clamp)
 // ---------------------------------------------
 $font-family-primary: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 $font-family-secondary: system-ui, Avenir, Helvetica, Arial, sans-serif;
 $font-family-mono: 'Courier New', Consolas, Monaco, monospace;
 
-$font-size-xs: 0.75rem;    // 12px
-$font-size-sm: 0.875rem;   // 14px
-$font-size-base: 1rem;     // 16px
-$font-size-lg: 1.125rem;   // 18px
-$font-size-xl: 1.25rem;    // 20px
-$font-size-2xl: 1.5rem;    // 24px
-$font-size-3xl: 2rem;      // 32px
-$font-size-4xl: 2.5rem;    // 40px
+// Fluid typography scale using clamp()
+// clamp(min, preferred, max) - responsive between breakpoints
+$font-size-xs: clamp(0.75rem, 1.5vw, 0.875rem);   // Zmniejszony skok
+$font-size-sm: clamp(0.875rem, 2vw, 1rem);        
+$font-size-base: clamp(0.9375rem, 2.5vw, 1.0625rem); // Mniejszy zakres
+$font-size-lg: clamp(1.0625rem, 3vw, 1.1875rem);  
+$font-size-xl: clamp(1.125rem, 3.5vw, 1.375rem);  
+$font-size-2xl: clamp(1.375rem, 4vw, 1.75rem);    
+$font-size-3xl: clamp(1.75rem, 5vw, 2.25rem);     
+$font-size-4xl: clamp(2.25rem, 6vw, 3rem);
 
 $font-weight-normal: 400;
 $font-weight-medium: 500;
@@ -111,7 +115,8 @@ $line-height-relaxed: 1.75;
 $breakpoint-xs: 320px;
 $breakpoint-sm: 640px;
 $breakpoint-md: 768px;
-$breakpoint-lg: 1024px;
+$breakpoint-tablet-landscape: 1024px; // Nowy breakpoint
+$breakpoint-lg: 1280px; // Zwiększone z 1024px
 $breakpoint-xl: 1280px;
 $breakpoint-2xl: 1536px;
 
@@ -162,7 +167,9 @@ $z-index-tooltip: 1070;
 // ---------------------------------------------
 // Layout
 // ---------------------------------------------
-$max-width-container: 1200px;
+$max-width-container: 1280px; // Stała wartość zamiast clamp
+$max-width-content: 800px;
+$container-padding: clamp(1rem, 5vw, 2rem); // Uniwersalny padding
 $min-height-screen: 100vh;
 
 // ---------------------------------------------

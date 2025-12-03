@@ -6,21 +6,22 @@
 @use '../abstracts/mixins' as *;
 
 .app-header {
+  grid-area: header;
   @include glass-effect;
   border-bottom: 1px solid $glass-border;
-  padding: $spacing-4 0;
+  padding: $spacing-3 0; // Zmniejszone z $spacing-4
 
   &__content {
     max-width: $max-width-container;
     margin: 0 auto;
-    padding: 0 $spacing-6;
+    padding: 0 $spacing-4; // Zmniejszone z $spacing-6
     text-align: center;
   }
 
   &__logos {
     @include flex-center;
-    gap: $spacing-6;
-    margin-bottom: $spacing-4;
+    gap: $spacing-4; // Zmniejszone z $spacing-6
+    margin-bottom: $spacing-3; // Zmniejszone z $spacing-4
   }
 
   &__title {

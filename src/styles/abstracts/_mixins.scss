@@ -2,6 +2,7 @@
 // SCSS Mixins
 // ============================================
 
+@use 'sass:color';
 @use 'variables' as *;
 
 // ---------------------------------------------
@@ -18,6 +19,10 @@
     }
   } @else if $breakpoint == 'md' {
     @media (min-width: $breakpoint-md) {
+      @content;
+    }
+  } @else if $breakpoint == 'tablet-landscape' {
+    @media (min-width: $breakpoint-tablet-landscape) {
       @content;
     }
   } @else if $breakpoint == 'lg' {
@@ -122,13 +127,18 @@
   }
 }
 
-@mixin button-variant($bg-color, $hover-color: darken($bg-color, 10%), $text-color: $color-white) {
+@mixin button-variant($bg-color, $hover-color: null, $text-color: $color-white) {
   @include button-base;
   background-color: $bg-color;
   color: $text-color;
   
   &:hover:not(:disabled) {
-    background-color: $hover-color;
+    @if $hover-color {
+      background-color: $hover-color;
+    } @else {
+      // Użyj color.scale zamiast darken
+      background-color: color.scale($bg-color, $lightness: -10%);
+    }
     transform: translateY(-2px);
     box-shadow: $shadow-md;
   }

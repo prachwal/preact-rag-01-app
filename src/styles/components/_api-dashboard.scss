@@ -12,27 +12,24 @@
 .api-dashboard {
   @include card-glass;
 
+  // Zmniejszone spacing dla lepszej gęstości
   &__header {
     text-align: center;
-    margin-bottom: $spacing-6;
-  }
-
-  &__subtitle {
-    opacity: 0.9;
-    margin: $spacing-2 0 0 0;
+    margin-bottom: $spacing-4; // Zmniejszone z $spacing-6
   }
 
   &__tabs {
     @include flex-center;
     justify-content: center;
-    margin-bottom: $spacing-6;
+    margin-bottom: $spacing-4; // Zmniejszone z $spacing-6
     background: $color-bg-dark;
     border-radius: $radius-md;
     padding: $spacing-1;
+    gap: $spacing-1; // Dodane dla lepszego rozstawienia
   }
 
   &__content {
-    margin-bottom: $spacing-6;
+    margin-bottom: $spacing-4; // Zmniejszone z $spacing-6
   }
 
   &__tab-content {
@@ -50,9 +47,9 @@
   }
 }.api-info-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: $spacing-4;
-  margin-top: $spacing-4;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); // Zmniejszone z 250px
+  gap: $spacing-3; // Zmniejszone z $spacing-4
+  margin-top: $spacing-3;
 }
 
 .api-info-card {
@@ -90,9 +87,9 @@
 
 .endpoints-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: $spacing-6;
-  margin-top: $spacing-4;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); // Zmniejszone z 300px
+  gap: $spacing-4; // Zmniejszone z $spacing-6
+  margin-top: $spacing-3;
 }
 
 .endpoint-group {
@@ -123,7 +120,7 @@
   }
 
   code {
-    background: rgba(255, 255, 255, 0.1);
+    background: $color-bg-light;
     padding: $spacing-1 $spacing-2;
     border-radius: $radius-sm;
     font-family: $font-family-mono;

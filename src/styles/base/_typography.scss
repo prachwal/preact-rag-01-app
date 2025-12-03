@@ -10,7 +10,7 @@
   font-family: $font-family-secondary;
   line-height: $line-height-normal;
   font-weight: $font-weight-normal;
-  font-size: 16px;
+  font-size: clamp(14px, 2vw, 18px);  // Responsive base font size
 
   color-scheme: light dark;
   color: $color-text-secondary;
