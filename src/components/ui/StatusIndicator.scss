@@ -1,0 +1,107 @@
+@use '../../styles/abstracts/variables' as *;
+@use '../../styles/abstracts/mixins' as *;
+@use 'sass:color';
+
+.status-indicator {
+  @include flex-center;
+  gap: $spacing-2;
+  font-size: $font-size-base;
+  font-weight: $font-weight-medium;
+
+  &__dot {
+    width: 10px;
+    height: 10px;
+    border-radius: $radius-full;
+    display: inline-block;
+    position: relative;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: $radius-full;
+      animation: pulse 2s ease-in-out infinite;
+    }
+  }
+
+  &__label {
+    line-height: 1;
+  }
+
+  &--online {
+    color: $color-success;
+
+    .status-indicator__dot {
+      background: $color-success;
+      box-shadow: 0 0 0 3px color.adjust($color-success, $alpha: -0.8);
+
+      &::after {
+        background: $color-success;
+      }
+    }
+  }
+
+  &--offline {
+    color: $color-text-secondary;
+
+    .status-indicator__dot {
+      background: $color-gray-500;
+      box-shadow: 0 0 0 3px color.adjust($color-gray-500, $alpha: -0.8);
+    }
+  }
+
+  &--warning {
+    color: $color-warning;
+
+    .status-indicator__dot {
+      background: $color-warning;
+      box-shadow: 0 0 0 3px color.adjust($color-warning, $alpha: -0.8);
+
+      &::after {
+        background: $color-warning;
+      }
+    }
+  }
+
+  &--error {
+    color: $color-danger;
+
+    .status-indicator__dot {
+      background: $color-danger;
+      box-shadow: 0 0 0 3px color.adjust($color-danger, $alpha: -0.8);
+
+      &::after {
+        background: $color-danger;
+      }
+    }
+  }
+
+  &--loading {
+    color: $color-info;
+
+    .status-indicator__dot {
+      background: $color-info;
+      animation: spin 1s linear infinite;
+    }
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0;
+    transform: scale(1.8);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

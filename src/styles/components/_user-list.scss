@@ -101,15 +101,18 @@
   @include flex-between;
   @include transition-base;
   border: 1px solid $glass-border;
+  color: $color-text-on-light-primary;
 
   &:hover {
     background: rgba(255, 255, 255, 0.15);
     transform: translateY(-2px);
+    color: $color-text-on-light-primary;
   }
 
   &--selected {
     border-color: $color-primary;
     background: rgba($color-primary, 0.2);
+    color: $color-text-on-light-primary;
   }
 
   &__info {

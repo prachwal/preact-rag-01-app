@@ -17,11 +17,13 @@
 
   &:hover {
     background: $color-bg-light;
+    color: $color-text-on-light-primary;
   }
 
   &--active {
     background: rgba(255, 255, 255, 0.15);
     border-bottom-color: $color-accent;
+    color: $color-text-primary;
   }
 
   &__icon {

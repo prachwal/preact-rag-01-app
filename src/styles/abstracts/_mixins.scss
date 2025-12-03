@@ -121,9 +121,14 @@
   transition: all $transition-base $easing-default;
   text-decoration: none;
   
+  // WCAG AA Focus indicators
+  @include focus-ring;
+  
   &:disabled {
-    opacity: 0.5;
+    opacity: 0.6;  // Increased from 0.5 for better visibility
     cursor: not-allowed;
+    background-color: $color-gray-600;
+    color: $color-gray-400;
   }
 }
 
@@ -169,12 +174,14 @@
   border-radius: $radius-lg;
   padding: $spacing-6;
   border: 1px solid $glass-border;
+  color: $color-text-on-light-primary; // Dark text for light backgrounds
 }
 
 @mixin card-glass {
   @include glass-effect;
   border-radius: $radius-lg;
   padding: $spacing-6;
+  color: $color-text-primary; // White text for glass/dark backgrounds
 }
 
 @mixin card-elevated {
@@ -215,6 +222,31 @@
 
 @mixin transition-slow($property: all) {
   transition: $property $transition-slow $easing-default;
+}
+
+// Smooth entrance animation
+@mixin fade-in-up {
+  animation: fadeInUp 0.5s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Scale on hover
+@mixin hover-lift {
+  @include transition-base(transform);
+  
+  &:hover {
+    transform: translateY(-4px);
+  }
 }
 
 // ---------------------------------------------
@@ -292,9 +324,57 @@
 // ---------------------------------------------
 // Focus Styles
 // ---------------------------------------------
-@mixin focus-ring($color: $color-primary) {
-  outline: none;
-  box-shadow: 0 0 0 3px rgba($color, 0.3);
+@mixin focus-ring($color: $color-focus-outline) {
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px $color;
+  }
+  
+  &:focus:not(:focus-visible) {
+    box-shadow: none;
+  }
+  
+  &:focus-visible {
+    box-shadow: 0 0 0 3px $color;
+  }
+}
+
+// High contrast focus for better visibility
+@mixin focus-high-contrast {
+  &:focus-visible {
+    outline: 3px solid $color-white;
+    outline-offset: 2px;
+    background-color: rgba($color-white, 0.1);
+  }
+}
+
+// ---------------------------------------------
+// Skip Links (Accessibility)
+// ---------------------------------------------
+@mixin skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: $color-primary;
+  color: $color-white;
+  padding: 8px;
+  text-decoration: none;
+  border-radius: $radius-sm;
+  z-index: $z-index-tooltip;
+  
+  &:focus {
+    top: 6px;
+  }
+}
+
+// ---------------------------------------------
+// Reduced Motion
+// ---------------------------------------------
+@mixin respect-motion {
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+    transition: none;
+  }
 }
 
 // ---------------------------------------------

@@ -9,25 +9,23 @@
   grid-area: header;
   @include glass-effect;
   border-bottom: 1px solid $glass-border;
-  padding: $spacing-3 0; // Zmniejszone z $spacing-4
-
-  &__content {
-    max-width: $max-width-container;
-    margin: 0 auto;
-    padding: 0 $spacing-4; // Zmniejszone z $spacing-6
-    text-align: center;
-  }
+  padding: $spacing-3 0;
+  text-align: center;
 
   &__logos {
     @include flex-center;
-    gap: $spacing-4; // Zmniejszone z $spacing-6
-    margin-bottom: $spacing-3; // Zmniejszone z $spacing-4
+    gap: $spacing-4;
+    margin-bottom: $spacing-3;
   }
 
   &__title {
     margin: 0;
     @include text-heading-1;
     text-shadow: $shadow-text;
+    background: linear-gradient(135deg, $color-primary 0%, $color-secondary 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 
   &__subtitle {
@@ -37,10 +35,6 @@
   }
 
   @include respond-to-max('md') {
-    &__content {
-      padding: 0 $spacing-4;
-    }
-
     &__logos {
       flex-direction: column;
       gap: $spacing-4;

@@ -13,14 +13,14 @@
   font-size: clamp(14px, 2vw, 18px);  // Responsive base font size
 
   color-scheme: light dark;
-  color: $color-text-secondary;
+  color: $color-text-secondary;        // WCAG AA compliant
   background-color: $color-gray-900;
 }
 
 // Body text
 body {
   font-family: $font-family-primary;
-  color: $color-text-primary;
+  color: $color-text-primary;          // WCAG AA compliant
 }
 
 // Headings
@@ -75,7 +75,7 @@ a {
   }
 
   &:focus-visible {
-    @include focus-ring($color-info);
+    @include focus-ring(rgba($color-info, 0.5));
   }
 }
 

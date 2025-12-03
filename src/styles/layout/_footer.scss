@@ -8,25 +8,13 @@
 .app-footer {
   grid-area: footer;
   background: $color-bg-dark;
-  padding: $spacing-4 0; // Zmniejszone z $spacing-6
+  padding: $spacing-4 0;
   border-top: 1px solid $glass-border;
+  text-align: center;
 
-  &__content {
-    max-width: $max-width-container;
-    margin: 0 auto;
-    padding: 0 $container-padding;
-    text-align: center;
-
-    // Inline display dla kompaktowości
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: $spacing-3;
-
-    p {
-      margin: 0;
-      font-size: $font-size-sm;
-      opacity: 0.8;
-    }
+  p {
+    margin: $spacing-1 0;
+    font-size: $font-size-sm;
+    opacity: 0.8;
   }
 }

@@ -1,0 +1,53 @@
+@use '../../styles/abstracts/variables' as *;
+@use '../../styles/abstracts/mixins' as *;
+
+.section {
+  width: 100%;
+  border-radius: $radius-lg;
+  @include transition-base;
+
+  &--default {
+    background: transparent;
+  }
+
+  &--glass {
+    @include card-glass;
+  }
+
+  &--elevated {
+    @include card-elevated;
+  }
+
+  &--dark {
+    background: $color-bg-dark;
+    border: 1px solid $glass-border;
+    padding: $spacing-6;
+    border-radius: $radius-lg;
+  }
+
+  &--spacing-sm {
+    padding: $spacing-4;
+  }
+
+  &--spacing-md {
+    padding: $spacing-6;
+  }
+
+  &--spacing-lg {
+    padding: $spacing-8;
+  }
+
+  @include respond-to-max('md') {
+    &--spacing-sm {
+      padding: $spacing-3;
+    }
+
+    &--spacing-md {
+      padding: $spacing-4;
+    }
+
+    &--spacing-lg {
+      padding: $spacing-6;
+    }
+  }
+}

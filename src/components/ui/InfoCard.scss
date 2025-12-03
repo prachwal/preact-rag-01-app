@@ -1,0 +1,97 @@
+@use '../../styles/abstracts/variables' as *;
+@use '../../styles/abstracts/mixins' as *;
+
+.info-card {
+  background: $color-bg-dark;
+  border-radius: $radius-md;
+  padding: $spacing-5;
+  text-align: center;
+  border: 1px solid $glass-border;
+  @include transition-base;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $spacing-2;
+
+  &--hoverable {
+    cursor: pointer;
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: $shadow-lg;
+      background: rgba(0, 0, 0, 0.4);
+    }
+  }
+
+  &--primary {
+    border-color: $color-primary;
+    background: rgba($color-primary, 0.1);
+  }
+
+  &--success {
+    border-color: $color-success;
+    background: rgba($color-success, 0.1);
+  }
+
+  &--warning {
+    border-color: $color-warning;
+    background: rgba($color-warning, 0.1);
+  }
+
+  &--danger {
+    border-color: $color-danger;
+    background: rgba($color-danger, 0.1);
+  }
+
+  &__icon {
+    font-size: $font-size-3xl;
+    line-height: 1;
+    margin-bottom: $spacing-1;
+  }
+
+  &__title {
+    margin: 0;
+    font-size: $font-size-sm;
+    opacity: 0.8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: $font-weight-semibold;
+  }
+
+  &__content {
+    font-size: $font-size-lg;
+    font-weight: $font-weight-semibold;
+    color: $color-primary-dark;
+
+    .info-card--success & {
+      color: $color-success;
+    }
+
+    .info-card--warning & {
+      color: $color-warning;
+    }
+
+    .info-card--danger & {
+      color: $color-danger;
+    }
+
+    code {
+      background: rgba(255, 255, 255, 0.1);
+      padding: $spacing-1 $spacing-2;
+      border-radius: $radius-sm;
+      font-family: $font-family-mono;
+    }
+  }
+
+  @include respond-to-max('md') {
+    padding: $spacing-4;
+
+    &__icon {
+      font-size: $font-size-2xl;
+    }
+
+    &__content {
+      font-size: $font-size-base;
+    }
+  }
+}

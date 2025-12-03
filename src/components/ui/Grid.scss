@@ -1,0 +1,33 @@
+@use '../../styles/abstracts/variables' as *;
+@use '../../styles/abstracts/mixins' as *;
+
+.grid {
+  display: grid;
+  width: 100%;
+
+  &--gap-sm {
+    gap: $spacing-2;
+  }
+
+  &--gap-md {
+    gap: $spacing-4;
+  }
+
+  &--gap-lg {
+    gap: $spacing-6;
+  }
+
+  @include respond-to-max('md') {
+    &--gap-md {
+      gap: $spacing-3;
+    }
+
+    &--gap-lg {
+      gap: $spacing-4;
+    }
+  }
+}
+
+.grid-item {
+  min-width: 0; // Prevent grid blowout
+}

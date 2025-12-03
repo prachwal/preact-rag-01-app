@@ -1,0 +1,109 @@
+@use '../../styles/abstracts/variables' as *;
+@use '../../styles/abstracts/mixins' as *;
+
+.tabs {
+  display: flex;
+  gap: $spacing-2;
+  
+  &--default {
+    background: transparent;
+    border-bottom: 2px solid $glass-border;
+  }
+
+  &--compact {
+    background: $color-bg-dark;
+    border-radius: $radius-md;
+    padding: $spacing-1;
+    gap: $spacing-1;
+  }
+
+  &--pills {
+    background: transparent;
+    gap: $spacing-3;
+  }
+
+  &__tab {
+    @include flex-center;
+    gap: $spacing-2;
+    background: transparent;
+    border: none;
+    padding: $spacing-3 $spacing-5;
+    color: $color-text-primary;
+    font-size: $font-size-base;
+    font-weight: $font-weight-medium;
+    cursor: pointer;
+    @include transition-base;
+    border-radius: $radius-base;
+    position: relative;
+    white-space: nowrap;
+
+    &:hover:not(&--disabled):not(&--active) {
+      background: rgba(255, 255, 255, 0.08);
+      transform: translateY(-1px);
+    }
+
+    &--active {
+      color: $color-text-primary;
+      background: rgba(255, 255, 255, 0.15);
+      
+      .tabs--default & {
+        background: transparent;
+        border-bottom: 3px solid $color-accent;
+      }
+
+      .tabs--pills & {
+        background: $color-primary;
+        color: $color-white;
+      }
+    }
+
+    &--disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    &:focus {
+      @include focus-ring;
+    }
+  }
+
+  &__icon {
+    font-size: $font-size-xl;
+    line-height: 1;
+  }
+
+  &__label {
+    @include text-body;
+  }
+
+  @include respond-to-max('md') {
+    &__tab {
+      flex-direction: column;
+      padding: $spacing-2 $spacing-3;
+      gap: $spacing-1;
+    }
+
+    &__label {
+      font-size: $font-size-sm;
+    }
+
+    &__icon {
+      font-size: $font-size-lg;
+    }
+  }
+}
+
+.tab-panel {
+  animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
