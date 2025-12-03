@@ -114,12 +114,12 @@ $color-gray-700: $blue-700;     // 2.6:1 (not WCAG AA compliant)
 $color-gray-800: $blue-800;     // 1.9:1 (not compliant)
 $color-gray-900: $blue-900;     // Background
 
-// Background Colors - WCAG compliant
+// Background Colors - WCAG compliant - Unified Dark Theme
 $color-bg-primary: linear-gradient(135deg, $color-primary 0%, $color-secondary 100%);
-$color-bg-light: rgba(255, 255, 255, 0.95);    // Higher opacity for contrast
-$color-bg-dark: rgba(0, 0, 0, 0.85);          // Higher opacity
-$color-bg-glass: rgba(255, 255, 255, 0.15);   // Adjusted for contrast
-$color-bg-semi-transparent: rgba(255, 255, 255, 0.08);
+$color-bg-light: rgba(0, 0, 0, 0.3);     // Dark glass-like background for consistency
+$color-bg-dark: rgba(0, 0, 0, 0.85);     // Darker background
+$color-bg-glass: rgba(0, 0, 0, 0.2);     // Dark glass effect
+$color-bg-semi-transparent: rgba(0, 0, 0, 0.1);
 $color-bg-overlay: rgba(0, 0, 0, 0.6);        // Darker for better contrast
 
 // Text Colors - WCAG 2 AA Compliant

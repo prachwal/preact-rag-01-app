@@ -1,9 +1,10 @@
-@use '../../styles/abstracts/variables' as *;
-@use '../../styles/abstracts/mixins' as *;
+@use '../../../styles/abstracts/variables' as *;
+@use '../../../styles/abstracts/mixins' as *;
 
 .tabs {
   display: flex;
-  gap: $spacing-2;
+  gap: 0;
+  width: 100%;
   
   &--default {
     background: transparent;
@@ -12,9 +13,9 @@
 
   &--compact {
     background: $color-bg-dark;
-    border-radius: $radius-md;
-    padding: $spacing-1;
-    gap: $spacing-1;
+    border-radius: 0;
+    padding: 0;
+    gap: 0;
   }
 
   &--pills {
@@ -23,37 +24,47 @@
   }
 
   &__tab {
-    @include flex-center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
     gap: $spacing-2;
     background: transparent;
     border: none;
+    border-radius: 0;
     padding: $spacing-3 $spacing-5;
     color: $color-text-primary;
     font-size: $font-size-base;
     font-weight: $font-weight-medium;
     cursor: pointer;
     @include transition-base;
-    border-radius: $radius-base;
     position: relative;
     white-space: nowrap;
 
     &:hover:not(&--disabled):not(&--active) {
-      background: rgba(255, 255, 255, 0.08);
-      transform: translateY(-1px);
+      background: rgba(255, 255, 255, 0.12);
     }
 
     &--active {
-      color: $color-text-primary;
-      background: rgba(255, 255, 255, 0.15);
+      color: $color-white;
+      background: $color-primary;
       
       .tabs--default & {
         background: transparent;
         border-bottom: 3px solid $color-accent;
+        color: $color-text-primary;
+      }
+
+      .tabs--compact & {
+        background: $color-primary;
+        color: $color-white;
       }
 
       .tabs--pills & {
         background: $color-primary;
         color: $color-white;
+        border-radius: $radius-base;
       }
     }
 
@@ -65,6 +76,10 @@
     &:focus {
       @include focus-ring;
     }
+
+    &:active:not(&--disabled) {
+      background: rgba($color-primary, 0.8);
+    }
   }
 
   &__icon {
@@ -74,11 +89,15 @@
 
   &__label {
     @include text-body;
+    font-weight: $font-weight-medium;
   }
 
   @include respond-to-max('md') {
+    flex-direction: row;
+    
     &__tab {
-      flex-direction: column;
+      flex: 1;
+      flex-direction: row;
       padding: $spacing-2 $spacing-3;
       gap: $spacing-1;
     }

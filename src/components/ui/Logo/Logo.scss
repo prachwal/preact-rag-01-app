@@ -1,9 +1,9 @@
-@use '../../styles/abstracts/variables' as *;
-@use '../../styles/abstracts/mixins' as *;
+@use '../../../styles/abstracts/variables' as *;
+@use '../../../styles/abstracts/mixins' as *;
 
 .logo {
-  height: 6em;
-  padding: $spacing-5;
+  height: 3em;
+  padding: $spacing-3;
   @include transition-base(filter);
 
   &:hover {

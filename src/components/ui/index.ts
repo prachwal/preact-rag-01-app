@@ -3,27 +3,27 @@
  * Exports all reusable UI components
  */
 
-export { Button } from './Button';
-export type { ButtonProps } from './Button';
+export { Button } from './Button/Button';
+export type { ButtonProps } from './Button/Button';
 
-export { Card } from './Card';
-export type { CardProps } from './Card';
+export { Card } from './Card/Card';
+export type { CardProps } from './Card/Card';
 
-export { Logo } from './Logo';
-export type { LogoProps } from './Logo';
+export { Container } from './Container/Container';
 
-export { NavTab } from './NavTab';
-export type { NavTabProps } from './NavTab';
+export { Grid, GridItem } from './Grid/Grid';
 
-export { Container } from './Container';
+export { InfoCard } from './InfoCard/InfoCard';
 
-export { Section } from './Section';
+export { Logo } from './Logo/Logo';
+export type { LogoProps } from './Logo/Logo';
 
-export { Tabs, TabPanel } from './Tabs';
-export type { Tab } from './Tabs';
+export { NavTab } from './NavTab/NavTab';
+export type { NavTabProps } from './NavTab/NavTab';
 
-export { Grid, GridItem } from './Grid';
+export { Section } from './Section/Section';
 
-export { InfoCard } from './InfoCard';
+export { StatusIndicator } from './StatusIndicator/StatusIndicator';
 
-export { StatusIndicator } from './StatusIndicator';
+export { Tabs, TabPanel } from './Tabs/Tabs';
+export type { Tab } from './Tabs/Tabs';

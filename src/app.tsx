@@ -43,17 +43,6 @@ export function App() {
         <Container size="lg">
           <div class="app-header__logos">
             <a
-              href="https://vite.dev"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Visit Vite website"
-            >
-              <Logo
-                src="/vite.svg"
-                alt="Vite logo"
-              />
-            </a>
-            <a
               href="https://preactjs.com"
               target="_blank"
               rel="noopener noreferrer"
@@ -62,7 +51,7 @@ export function App() {
               <Logo
                 src={preactLogo}
                 alt="Preact logo"
-                className="preact"
+                variant="preact"
               />
             </a>
           </div>

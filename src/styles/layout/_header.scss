@@ -9,7 +9,7 @@
   grid-area: header;
   @include glass-effect;
   border-bottom: 1px solid $glass-border;
-  padding: $spacing-3 0;
+  padding: $spacing-2 0;
   text-align: center;
 
   &__logos {

@@ -1,6 +1,6 @@
 import { useState, useCallback } from 'preact/hooks';
-import { Button } from '../ui/Button';
-import { Card } from '../ui/Card';
+import { Button } from '../ui/Button/Button';
+import { Card } from '../ui/Card/Card';
 
 export interface DemoSectionProps {
   className?: string;
