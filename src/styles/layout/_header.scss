@@ -1,0 +1,52 @@
+// ============================================
+// Header Layout
+// ============================================
+
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.app-header {
+  @include glass-effect;
+  border-bottom: 1px solid $glass-border;
+  padding: $spacing-4 0;
+
+  &__content {
+    max-width: $max-width-container;
+    margin: 0 auto;
+    padding: 0 $spacing-6;
+    text-align: center;
+  }
+
+  &__logos {
+    @include flex-center;
+    gap: $spacing-6;
+    margin-bottom: $spacing-4;
+  }
+
+  &__title {
+    margin: 0;
+    @include text-heading-1;
+    text-shadow: $shadow-text;
+  }
+
+  &__subtitle {
+    margin: $spacing-2 0 0 0;
+    font-size: $font-size-lg;
+    opacity: 0.9;
+  }
+
+  @include respond-to-max('md') {
+    &__content {
+      padding: 0 $spacing-4;
+    }
+
+    &__logos {
+      flex-direction: column;
+      gap: $spacing-4;
+    }
+
+    &__title {
+      font-size: $font-size-3xl;
+    }
+  }
+}

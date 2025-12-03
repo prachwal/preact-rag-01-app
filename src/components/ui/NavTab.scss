@@ -1,0 +1,44 @@
+@use '../../styles/abstracts/variables' as *;
+@use '../../styles/abstracts/mixins' as *;
+
+.nav-tab {
+  flex: 1;
+  background: transparent;
+  border: none;
+  padding: $spacing-4 $spacing-6;
+  color: $color-text-primary;
+  cursor: pointer;
+  @include transition-base;
+  border-bottom: 3px solid transparent;
+  font-size: $font-size-base;
+  font-weight: $font-weight-medium;
+  @include flex-center;
+  gap: $spacing-2;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  &--active {
+    background: rgba(255, 255, 255, 0.15);
+    border-bottom-color: $color-accent;
+  }
+
+  &__icon {
+    font-size: $font-size-xl;
+  }
+
+  &__label {
+    @include text-body;
+  }
+
+  @include respond-to-max('md') {
+    flex-direction: column;
+    padding: $spacing-3;
+    gap: $spacing-1;
+
+    &__label {
+      font-size: $font-size-sm;
+    }
+  }
+}

@@ -47,6 +47,7 @@
     "jsdom": "^27.2.0",
     "prettier": "^3.7.3",
     "rimraf": "^6.1.2",
+    "sass": "^1.94.2",
     "terser": "^5.44.1",
     "typedoc": "^0.28.15",
     "typedoc-plugin-markdown": "^4.9.0",

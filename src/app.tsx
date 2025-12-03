@@ -1,8 +1,8 @@
 import { useState, useCallback, useMemo } from 'preact/hooks';
-import type { ComponentChildren } from 'preact';
 import preactLogo from './assets/preact.svg';
 import { ApiDashboard } from './components/api';
-import './app.css';
+import { Logo, NavTab, DemoSection } from './components/ui';
+import './styles/styles.scss';
 
 /**
  * Main application component for the Preact RAG app.
@@ -24,95 +24,6 @@ import './app.css';
  *
  * @returns The main application interface
  */
-
-// Optimized reusable components
-const Logo = ({ src, alt, className }: { src: string; alt: string; className?: string }) => (
-  <img src={src} alt={alt} class={`logo ${className ?? ''}`} loading="lazy" />
-);
-
-const NavTab = ({ 
-  active, 
-  icon, 
-  label, 
-  onClick 
-}: { 
-  active: boolean; 
-  icon: string; 
-  label: string; 
-  onClick: () => void;
-}) => (
-  <button 
-    type="button" 
-    class={`nav-tab ${active ? 'nav-tab--active' : ''}`}
-    onClick={onClick}
-    aria-selected={active}
-  >
-    <span class="nav-tab__icon" role="img" aria-label={icon}>{icon}</span>
-    <span class="nav-tab__label">{label}</span>
-  </button>
-);
-
-const Card = ({ children }: { children: ComponentChildren }) => (
-  <div class="card">{children}</div>
-);
-
-const Button = ({ 
-  children, 
-  onClick, 
-  variant = 'primary',
-  disabled = false 
-}: { 
-  children: ComponentChildren; 
-  onClick?: () => void;
-  variant?: 'primary' | 'secondary' | 'success' | 'danger';
-  disabled?: boolean;
-}) => (
-  <button 
-    type="button"
-    class={`btn btn--${variant}`}
-    onClick={onClick}
-    disabled={disabled}
-  >
-    {children}
-  </button>
-);
-
-// Demo Section Component
-const DemoSection = () => {
-  const [count, setCount] = useState(0);
-  
-  const increment = useCallback(() => {
-    setCount(c => c + 1);
-  }, []);
-
-  return (
-    <div class="demo-section">
-      <h2>Preact Demo</h2>
-      <Card>
-        <Button onClick={increment}>
-          count is {count}
-        </Button>
-        <p>
-          Edit <code>src/app.tsx</code> and save to test HMR
-        </p>
-      </Card>
-      <p>
-        Check out{' '}
-        <a 
-          href="https://preactjs.com/guide/v10/getting-started#create-a-vite-powered-preact-app" 
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          create-preact
-        </a>
-        , the official Preact + Vite starter
-      </p>
-      <p class="read-the-docs">
-        Click on the Vite and Preact logos to learn more
-      </p>
-    </div>
-  );
-};
 
 export function App() {
   const [activeView, setActiveView] = useState<'demo' | 'api'>('demo');

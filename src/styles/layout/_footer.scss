@@ -1,0 +1,25 @@
+// ============================================
+// Footer Layout
+// ============================================
+
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.app-footer {
+  background: rgba(0, 0, 0, 0.2);
+  padding: $spacing-6 0;
+  border-top: 1px solid $glass-border;
+
+  &__content {
+    max-width: $max-width-container;
+    margin: 0 auto;
+    padding: 0 $spacing-6;
+    text-align: center;
+
+    p {
+      margin: $spacing-2 0;
+      font-size: $font-size-sm;
+      opacity: 0.8;
+    }
+  }
+}

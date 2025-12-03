@@ -1,0 +1,176 @@
+// ============================================
+// API Dashboard Component Styles
+// ============================================
+
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.api-dashboard {
+  @include card-glass;
+  
+  &__header {
+    text-align: center;
+    margin-bottom: $spacing-6;
+  }
+
+  &__subtitle {
+    opacity: 0.9;
+    margin: $spacing-2 0 0 0;
+  }
+
+  &__tabs {
+    @include flex-center;
+    justify-content: center;
+    margin-bottom: $spacing-6;
+    background: $color-bg-dark;
+    border-radius: $radius-md;
+    padding: $spacing-1;
+  }
+
+  &__content {
+    margin-bottom: $spacing-6;
+  }
+
+  &__tab-content {
+    min-height: 400px;
+  }
+
+  &__footer {
+    margin-top: $spacing-8;
+    padding-top: $spacing-6;
+    border-top: 1px solid $glass-border;
+  }
+
+  &__info {
+    margin-bottom: $spacing-8;
+  }
+}
+
+.api-info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: $spacing-4;
+  margin-top: $spacing-4;
+}
+
+.api-info-card {
+  background: $color-bg-dark;
+  border-radius: $radius-md;
+  padding: $spacing-5;
+  text-align: center;
+  border: 1px solid $glass-border;
+  @include transition-base;
+
+  &:hover {
+    transform: translateY(-2px);
+    background: rgba(0, 0, 0, 0.3);
+  }
+
+  h4 {
+    margin: 0 0 $spacing-2 0;
+    font-size: $font-size-sm;
+    opacity: 0.8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  code,
+  span {
+    font-size: $font-size-lg;
+    font-weight: $font-weight-semibold;
+    color: $color-primary-dark;
+  }
+}
+
+.api-dashboard__endpoints {
+  margin-top: $spacing-6;
+}
+
+.endpoints-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: $spacing-6;
+  margin-top: $spacing-4;
+}
+
+.endpoint-group {
+  background: $color-bg-dark;
+  border-radius: $radius-md;
+  padding: $spacing-5;
+  border: 1px solid $glass-border;
+
+  h4 {
+    margin: 0 0 $spacing-4 0;
+    color: $color-primary-dark;
+    font-size: $font-size-lg;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  li {
+    padding: $spacing-2 0;
+    border-bottom: 1px solid $glass-border;
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  code {
+    background: rgba(255, 255, 255, 0.1);
+    padding: $spacing-1 $spacing-2;
+    border-radius: $radius-sm;
+    font-family: $font-family-mono;
+    font-size: $font-size-sm;
+    color: $color-success;
+  }
+}
+
+// Tab button styles
+.tab-button {
+  flex: 1;
+  background: transparent;
+  border: none;
+  padding: $spacing-4 $spacing-6;
+  color: $color-text-primary;
+  cursor: pointer;
+  border-radius: $radius-base;
+  @include transition-base;
+  font-size: $font-size-sm;
+
+  &--active {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+  }
+
+  &__icon {
+    margin-right: $spacing-2;
+  }
+}
+
+// Responsive design
+@include respond-to-max('md') {
+  .api-dashboard {
+    padding: $spacing-4;
+
+    &__tabs {
+      flex-direction: column;
+    }
+  }
+
+  .api-info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .endpoints-list {
+    grid-template-columns: 1fr;
+  }
+
+  .endpoint-group {
+    padding: $spacing-4;
+  }
+}

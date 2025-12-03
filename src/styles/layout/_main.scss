@@ -1,0 +1,20 @@
+// ============================================
+// Main Content Layout
+// ============================================
+
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.app-main {
+  flex: 1;
+  padding: $spacing-6;
+
+  &__content {
+    max-width: $max-width-container;
+    margin: 0 auto;
+  }
+
+  @include respond-to-max('md') {
+    padding: $spacing-4;
+  }
+}

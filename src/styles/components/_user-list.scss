@@ -1,0 +1,181 @@
+// ============================================
+// User List Component Styles
+// ============================================
+
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.user-list {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: $radius-md;
+  padding: $spacing-5;
+  border: 1px solid $glass-border;
+
+  &__header {
+    @include flex-between;
+    margin-bottom: $spacing-6;
+    flex-wrap: wrap;
+    gap: $spacing-4;
+  }
+
+  &__actions {
+    display: flex;
+    gap: $spacing-2;
+  }
+
+  &__error {
+    background: rgba($color-danger, 0.2);
+    border: 1px solid rgba($color-danger, 0.4);
+    border-radius: $radius-base;
+    padding: $spacing-4;
+    margin-bottom: $spacing-4;
+    @include flex-between;
+  }
+
+  &__form {
+    background: $color-bg-dark;
+    border-radius: $radius-md;
+    padding: $spacing-5;
+    margin-bottom: $spacing-6;
+  }
+
+  &__details {
+    background: $color-bg-dark;
+    border-radius: $radius-md;
+    padding: $spacing-5;
+    margin-bottom: $spacing-6;
+  }
+}
+
+// Form styles
+.form-group {
+  margin-bottom: $spacing-4;
+  text-align: left;
+
+  label {
+    display: block;
+    margin-bottom: $spacing-2;
+    font-weight: $font-weight-medium;
+  }
+
+  input {
+    width: 100%;
+    padding: $spacing-3;
+    border: 1px solid $glass-border;
+    border-radius: $radius-base;
+    background: rgba(255, 255, 255, 0.1);
+    color: $color-text-primary;
+    font-size: $font-size-base;
+    @include transition-base;
+
+    &::placeholder {
+      color: $color-text-muted;
+    }
+
+    &:focus {
+      @include focus-ring($color-primary);
+    }
+  }
+}
+
+.form-actions {
+  display: flex;
+  gap: $spacing-2;
+  justify-content: flex-end;
+  margin-top: $spacing-5;
+}
+
+// Users list
+.users {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: $spacing-4;
+}
+
+.user-item {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: $radius-md;
+  padding: $spacing-4;
+  @include flex-between;
+  @include transition-base;
+  border: 1px solid $glass-border;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+  }
+
+  &--selected {
+    border-color: $color-primary;
+    background: rgba($color-primary, 0.2);
+  }
+
+  &__info {
+    @include flex-column;
+    gap: $spacing-1;
+  }
+
+  &__name {
+    font-weight: $font-weight-semibold;
+    font-size: $font-size-lg;
+  }
+
+  &__email {
+    opacity: 0.8;
+    font-size: $font-size-base;
+  }
+
+  &__id {
+    opacity: 0.6;
+    font-size: $font-size-sm;
+  }
+
+  &__actions {
+    display: flex;
+    gap: $spacing-2;
+  }
+}
+
+// User details
+.user-details__field {
+  margin-bottom: $spacing-3;
+  padding: $spacing-2 0;
+  border-bottom: 1px solid $glass-border;
+
+  &:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+  }
+
+  strong {
+    display: inline-block;
+    min-width: 100px;
+    margin-right: $spacing-2;
+  }
+}
+
+// Responsive design
+@include respond-to-max('md') {
+  .user-list {
+    &__header {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    &__actions {
+      justify-content: center;
+    }
+  }
+
+  .user-item {
+    flex-direction: column;
+    gap: $spacing-4;
+    align-items: stretch;
+
+    &__actions {
+      justify-content: center;
+    }
+  }
+}

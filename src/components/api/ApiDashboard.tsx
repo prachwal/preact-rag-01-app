@@ -5,7 +5,6 @@
 import { useState } from 'preact/hooks';
 import { UserList } from './UserList';
 import { GreetingComponent } from './GreetingComponent';
-import './ApiDashboard.css';
 
 interface ApiDashboardProps {
   className?: string;

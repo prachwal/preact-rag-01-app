@@ -1,0 +1,16 @@
+@use '../../styles/abstracts/variables' as *;
+@use '../../styles/abstracts/mixins' as *;
+
+.logo {
+  height: 6em;
+  padding: $spacing-5;
+  @include transition-base(filter);
+
+  &:hover {
+    filter: drop-shadow(0 0 2em #646cffaa);
+  }
+
+  &--preact:hover {
+    filter: drop-shadow(0 0 2em #673ab8aa);
+  }
+}

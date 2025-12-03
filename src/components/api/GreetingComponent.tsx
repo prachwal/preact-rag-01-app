@@ -4,7 +4,6 @@
 
 import { useState } from 'preact/hooks';
 import { useAppDispatch, useAppSelector, fetchGreeting, postGreeting, checkHealth, clearError, clearGreeting } from '../../store';
-import './GreetingComponent.css';
 
 interface GreetingComponentProps {
   className?: string;

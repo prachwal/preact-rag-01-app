@@ -1,0 +1,16 @@
+@use '../../styles/abstracts/variables' as *;
+@use '../../styles/abstracts/mixins' as *;
+
+.card {
+  &--default {
+    @include card-base;
+  }
+
+  &--glass {
+    @include card-glass;
+  }
+
+  &--elevated {
+    @include card-elevated;
+  }
+}

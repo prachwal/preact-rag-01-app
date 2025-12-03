@@ -1,0 +1,33 @@
+// ============================================
+// App Layout
+// ============================================
+
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.app-container {
+  min-height: $min-height-screen;
+  @include gradient-bg;
+  color: $color-text-primary;
+  font-family: $font-family-primary;
+  display: flex;
+  flex-direction: column;
+}
+
+.demo-section {
+  text-align: center;
+  @include card-glass;
+  padding: $spacing-8;
+
+  h2 {
+    margin-bottom: $spacing-6;
+  }
+
+  p {
+    margin: $spacing-4 0;
+  }
+}
+
+.api-section {
+  width: 100%;
+}
