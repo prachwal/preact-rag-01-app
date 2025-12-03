@@ -12,10 +12,24 @@ interface SectionProps {
 /**
  * Reusable section component with different visual variants
  * 
+ * @component
+ * @param {ComponentChildren} children - Section content
+ * @param {'default' | 'glass' | 'elevated' | 'dark'} variant - Visual style (default: 'default')
+ * @param {'sm' | 'md' | 'lg'} spacing - Internal padding (default: 'md')
+ * @param {string} ariaLabelledby - ID of element that labels this section
+ * @param {string} className - Additional CSS classes
+ * 
  * @example
  * ```tsx
+ * // Glass effect section
  * <Section variant="glass" spacing="lg">
- *   <h2>Section Title</h2>
+ *   <h2>Featured Content</h2>
+ *   <p>Beautiful glass effect</p>
+ * </Section>
+ * 
+ * // Dark section with custom spacing
+ * <Section variant="dark" spacing="sm" ariaLabelledby="about-heading">
+ *   <h2 id="about-heading">About Us</h2>
  * </Section>
  * ```
  */

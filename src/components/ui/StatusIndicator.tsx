@@ -10,10 +10,25 @@ interface StatusIndicatorProps {
 /**
  * StatusIndicator component for showing status with visual feedback
  * 
+ * @component
+ * @param {'online' | 'offline' | 'warning' | 'error' | 'loading'} status - Current status
+ * @param {string} label - Custom label (defaults to status name)
+ * @param {boolean} showDot - Show animated status dot (default: true)
+ * @param {string} className - Additional CSS classes
+ * 
  * @example
  * ```tsx
- * <StatusIndicator status="online" label="System Online" />
- * <StatusIndicator status="loading" showDot />
+ * // Online status with default label
+ * <StatusIndicator status="online" />
+ * 
+ * // Custom label
+ * <StatusIndicator status="online" label="All Systems Operational" />
+ * 
+ * // Loading without dot
+ * <StatusIndicator status="loading" label="Processing..." showDot={false} />
+ * 
+ * // Error state
+ * <StatusIndicator status="error" label="Connection Failed" />
  * ```
  */
 export function StatusIndicator({ 

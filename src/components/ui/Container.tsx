@@ -9,12 +9,25 @@ interface ContainerProps {
 }
 
 /**
- * Container component for centering and max-width content
+ * Container component for centering and constraining content width
+ * 
+ * @component
+ * @param {ComponentChildren} children - Container content
+ * @param {'sm' | 'md' | 'lg' | 'xl' | 'full'} size - Maximum width (default: 'lg')
+ * @param {boolean} centered - Center horizontally with auto margins (default: true)
+ * @param {string} className - Additional CSS classes
  * 
  * @example
  * ```tsx
+ * // Large centered container
  * <Container size="lg">
- *   <h1>Content</h1>
+ *   <h1>Page Title</h1>
+ *   <p>Content goes here</p>
+ * </Container>
+ * 
+ * // Full-width container
+ * <Container size="full" centered={false}>
+ *   <HeroSection />
  * </Container>
  * ```
  */

@@ -13,10 +13,29 @@ interface InfoCardProps {
 /**
  * InfoCard component for displaying information in a card format
  * 
+ * @component
+ * @param {string} title - Card title
+ * @param {ComponentChildren} children - Card content/value
+ * @param {string} icon - Optional emoji or icon character
+ * @param {'default' | 'primary' | 'success' | 'warning' | 'danger'} variant - Visual style (default: 'default')
+ * @param {boolean} hoverable - Enable hover effect (default: true)
+ * @param {string} className - Additional CSS classes
+ * 
  * @example
  * ```tsx
- * <InfoCard title="Status" icon="✓" variant="success">
+ * // Success card with icon
+ * <InfoCard title="Server Status" icon="✓" variant="success">
  *   <span>Online</span>
+ * </InfoCard>
+ * 
+ * // Stats card
+ * <InfoCard title="Total Users" variant="primary">
+ *   <div className="stat-value">1,234</div>
+ * </InfoCard>
+ * 
+ * // Warning card without hover
+ * <InfoCard title="Disk Space" icon="⚠" variant="warning" hoverable={false}>
+ *   <span>85% used</span>
  * </InfoCard>
  * ```
  */
