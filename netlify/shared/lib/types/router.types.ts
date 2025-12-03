@@ -179,14 +179,22 @@ export class Router {
   ): { match: boolean; params: Record<string, string> } {
     const params: Record<string, string> = {};
 
+    // Normalize trailing slashes: remove trailing slash unless it's the root path
+    const normalizedRoutePath = routePath.endsWith('/') && routePath !== '/' 
+      ? routePath.slice(0, -1) 
+      : routePath;
+    const normalizedUrlPath = urlPath.endsWith('/') && urlPath !== '/' 
+      ? urlPath.slice(0, -1) 
+      : urlPath;
+
     // Exact match
-    if (routePath === urlPath) {
+    if (normalizedRoutePath === normalizedUrlPath) {
       return { match: true, params };
     }
 
     // Parameter matching (e.g., /users/:id)
-    const routeParts = routePath.split('/');
-    const urlParts = urlPath.split('/');
+    const routeParts = normalizedRoutePath.split('/').filter(p => p !== '');
+    const urlParts = normalizedUrlPath.split('/').filter(p => p !== '');
 
     if (routeParts.length !== urlParts.length) {
       return { match: false, params };
@@ -197,8 +205,12 @@ export class Router {
       const urlPart = urlParts[i];
 
       if (routePart?.startsWith(':')) {
-        // Parameter
+        // Parameter - check for duplicate parameter names
         const paramName = routePart.slice(1);
+        if (params[paramName] !== undefined) {
+          // Duplicate parameter - invalid route
+          return { match: false, params };
+        }
         params[paramName] = urlPart ?? '';
       } else if (routePart !== urlPart) {
         return { match: false, params };
@@ -308,7 +320,9 @@ export class Router {
       await runMiddleware();
 
       if (res._sent) {
-        return new Response(res._body, {
+        // For 204 No Content responses, don't include a body
+        const body = res.statusCode === HTTP_STATUS.NO_CONTENT ? undefined : res._body;
+        return new Response(body, {
           status: res.statusCode,
           headers: res.headers,
         });

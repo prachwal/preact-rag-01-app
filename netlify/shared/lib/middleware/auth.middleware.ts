@@ -36,14 +36,34 @@ function decodeJWT(token: string): JWTPayload | null {
       return null;
     }
 
-    const payload = JSON.parse(atob(parts[PAYLOAD_INDEX]));
-    
-    // Check if token is expired
-    if (payload.exp && typeof payload.exp === 'number' && Date.now() >= payload.exp * MILLISECONDS_MULTIPLIER) {
+    // Validate base64 format before decoding (allow standard base64 chars)
+    const payloadB64 = parts[PAYLOAD_INDEX];
+    if (!/^[A-Za-z0-9+/=]*$/.test(payloadB64)) {
       return null;
     }
 
-    return payload;
+    const payload = JSON.parse(atob(payloadB64));
+    
+    // Validate payload structure
+    if (typeof payload !== 'object' || payload === null) {
+      return null;
+    }
+
+    // Check required fields exist and have correct types
+    if (typeof payload.userId !== 'string' || 
+        typeof payload.email !== 'string' || 
+        typeof payload.role !== 'string' ||
+        typeof payload.iat !== 'number' ||
+        typeof payload.exp !== 'number') {
+      return null;
+    }
+
+    // Check if token is expired
+    if (Date.now() >= payload.exp * MILLISECONDS_MULTIPLIER) {
+      return null;
+    }
+
+    return payload as JWTPayload;
   } catch {
     return null;
   }

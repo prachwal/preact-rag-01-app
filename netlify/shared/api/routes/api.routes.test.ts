@@ -146,7 +146,8 @@ describe('API Route Handlers', () => {
       await optionsCors(mockRequest, mockResponse);
 
       expect(mockResponse.statusCode).toBe(HTTP_STATUS.NO_CONTENT);
-      expect(responseData.status).toBe('success');
+      // 204 No Content responses should not have a body
+      expect(responseData).toBeNull();
     });
   });
 

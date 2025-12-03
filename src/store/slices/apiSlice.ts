@@ -34,7 +34,7 @@ export const apiSlice = createApi({
         const trimmedName = name?.trim();
         const params = trimmedName != null && trimmedName !== '' ? { name: trimmedName } : undefined;
         return {
-          url: '',
+          url: '/',
           params,
         };
       },
@@ -43,7 +43,7 @@ export const apiSlice = createApi({
 
     postGreeting: builder.mutation<ApiResponseWrapper<unknown>, Record<string, unknown>>({
       query: (data) => ({
-        url: '',
+        url: '/',
         method: 'POST',
         body: data,
       }),
@@ -52,18 +52,18 @@ export const apiSlice = createApi({
 
     // Health check endpoint
     getHealth: builder.query<ApiResponseWrapper<HealthResponse>, void>({
-      query: () => 'health',
+      query: () => 'health/',
       providesTags: ['Health'],
     }),
 
     // Users endpoints
     getUsers: builder.query<ApiResponseWrapper<{ users: Array<{ id: string; name: string; email: string }> }>, void>({
-      query: () => 'users',
+      query: () => 'users/',
       providesTags: ['Users'],
     }),
 
     getUser: builder.query<ApiResponseWrapper<{ id: string; name: string; email: string }>, string>({
-      query: (id) => `users/${id}`,
+      query: (id) => `users/${id}/`,
       providesTags: (_result, _error, id) => [{ type: 'Users', id }],
     }),
   }),

@@ -19,6 +19,7 @@
     "test:run": "NO_COLOR=1 vitest run --reporter=verbose",
     "test:watch": "NO_COLOR=1 vitest --watch --reporter=verbose",
     "test:coverage": "NO_COLOR=1 vitest run --coverage --reporter=verbose",
+    "test:api": "node scripts/test_api_comprehensive.mjs",
     "docs:generate": "typedoc",
     "docs:serve": "npx http-server docs -p 4000",
     "docs:clean": "rimraf docs",

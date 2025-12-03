@@ -46,16 +46,10 @@ export const postData = (req: ExpressRequest, res: ExpressResponse): void => {
 };
 
 /**
- * OPTIONS / - CORS preflight
+ * OPTIONS / - CORS preflight handler
  */
 export const optionsCors = (_req: ExpressRequest, res: ExpressResponse): void => {
-  res.status(HTTP_STATUS.NO_CONTENT).json({
-    status: 'success',
-    metadata: {
-      timestamp: new Date().toISOString(),
-      version: '1.0.0',
-    },
-  });
+  res.status(HTTP_STATUS.NO_CONTENT);
 };
 
 /**

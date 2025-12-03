@@ -17,26 +17,28 @@ interface RateLimitStore {
 // In production, use Redis or similar distributed store
 class MemoryRateLimitStore implements RateLimitStore {
   private store = new Map<string, { count: number; resetTime: number }>();
-  private cleanupInterval: NodeJS.Timeout;
+  private cleanupInterval: NodeJS.Timeout | null = null;
 
-  constructor() {
-    // Clean up expired entries every minute
-    this.cleanupInterval = setInterval(() => {
-      const now = Date.now();
-      for (const [key, value] of this.store.entries()) {
-        if (value.resetTime <= now) {
-          this.store.delete(key);
+  constructor(cleanupEnabled = true) {
+    if (cleanupEnabled) {
+      // Clean up expired entries every minute
+      this.cleanupInterval = setInterval(() => {
+        const now = Date.now();
+        for (const [key, value] of this.store.entries()) {
+          if (value.resetTime <= now) {
+            this.store.delete(key);
+          }
         }
-      }
-    }, 60000); // eslint-disable-line @typescript-eslint/no-magic-numbers
+      }, 60000); // eslint-disable-line @typescript-eslint/no-magic-numbers
+    }
   }
 
-  async get(key: string): Promise<{ count: number; resetTime: number } | null> {
+  get(key: string): Promise<{ count: number; resetTime: number } | null> {
     const entry = this.store.get(key);
     if (!entry || entry.resetTime <= Date.now()) {
-      return null;
+      return Promise.resolve(null);
     }
-    return entry;
+    return Promise.resolve(entry);
   }
 
   async set(key: string, value: { count: number; resetTime: number }, _ttl: number): Promise<void> {
@@ -63,6 +65,7 @@ class MemoryRateLimitStore implements RateLimitStore {
   close(): void {
     if (this.cleanupInterval) {
       clearInterval(this.cleanupInterval);
+      this.cleanupInterval = null;
     }
     this.store.clear();
   }
@@ -81,8 +84,8 @@ export interface RateLimitOptions {
   store?: RateLimitStore;
 }
 
-// Create default store
-const defaultStore = new MemoryRateLimitStore();
+// Create default store (disable cleanup for serverless environments)
+const defaultStore = new MemoryRateLimitStore(false);
 
 /**
  * Create rate limiting middleware
