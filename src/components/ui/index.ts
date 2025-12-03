@@ -14,6 +14,3 @@ export type { LogoProps } from './Logo';
 
 export { NavTab } from './NavTab';
 export type { NavTabProps } from './NavTab';
-
-export { DemoSection } from './DemoSection';
-export type { DemoSectionProps } from './DemoSection';

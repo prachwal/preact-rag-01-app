@@ -1,7 +1,7 @@
 import { useState, useCallback, useMemo } from 'preact/hooks';
 import preactLogo from './assets/preact.svg';
-import { ApiDashboard } from './components/api';
-import { Logo, NavTab, DemoSection } from './components/ui';
+import { ApiDashboard, DemoSection } from './components/api';
+import { Logo, NavTab } from './components/ui';
 import './styles/styles.scss';
 
 /**
@@ -39,19 +39,29 @@ export function App() {
 
   return (
     <div class="app-container">
-      <header class="app-header">
+      <header class="app-header" role="banner">
         <div class="app-header__content">
           <div class="app-header__logos">
-            <a href="https://vite.dev" target="_blank" rel="noopener noreferrer">
-              <Logo 
-                src="/vite.svg" 
-                alt="Vite logo" 
+            <a
+              href="https://vite.dev"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Visit Vite website"
+            >
+              <Logo
+                src="/vite.svg"
+                alt="Vite logo"
               />
             </a>
-            <a href="https://preactjs.com" target="_blank" rel="noopener noreferrer">
-              <Logo 
-                src={preactLogo} 
-                alt="Preact logo" 
+            <a
+              href="https://preactjs.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Visit Preact website"
+            >
+              <Logo
+                src={preactLogo}
+                alt="Preact logo"
                 className="preact"
               />
             </a>
@@ -66,7 +76,7 @@ export function App() {
       </header>
 
       <nav class="app-nav" role="navigation" aria-label="Main navigation">
-        <div class="nav-tabs" role="tablist">
+        <div class="nav-tabs" role="tablist" aria-label="Application sections">
           {views.map((view) => (
             <NavTab
               key={view.id}
@@ -79,14 +89,18 @@ export function App() {
         </div>
       </nav>
 
-      <main class="app-main" role="main">
-        <div class="app-main__content">
+      <main role="main" aria-labelledby="main-content">
+        <div id="main-content">
           {activeView === 'demo' ? (
-            <DemoSection />
+            <article class="demo-article" aria-labelledby="demo-heading">
+              <DemoSection />
+            </article>
           ) : (
-            <div class="api-section">
-              <ApiDashboard />
-            </div>
+            <section class="api-section" aria-labelledby="api-dashboard-title">
+              <article class="api-article">
+                <ApiDashboard />
+              </article>
+            </section>
           )}
         </div>
       </main>

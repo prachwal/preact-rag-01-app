@@ -5,6 +5,10 @@
 @use '../abstracts/variables' as *;
 @use '../abstracts/mixins' as *;
 
+.demo-article {
+  margin-bottom: $spacing-6;
+}
+
 .demo-section {
   text-align: center;
   padding: $spacing-6;
