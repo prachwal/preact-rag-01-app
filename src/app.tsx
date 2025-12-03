@@ -41,26 +41,31 @@ export function App() {
     <div class="app-container">
       <header class="app-header" role="banner">
         <Container size="lg">
-          <div class="app-header__logos">
-            <a
-              href="https://preactjs.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Visit Preact website"
-            >
-              <Logo
-                src={preactLogo}
-                alt="Preact logo"
-                variant="preact"
-              />
-            </a>
+          <div class="app-header__content">
+            <div class="app-header__top-row">
+              <div class="app-header__logos">
+                <a
+                  href="https://preactjs.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Visit Preact website"
+                >
+                  <Logo
+                    src={preactLogo}
+                    alt="Preact logo"
+                    variant="preact"
+                  />
+                </a>
+              </div>
+              <h1 class="app-header__title">
+                <span class="app-header__icon">🚀</span>
+                Preact RAG App
+              </h1>
+            </div>
+            <p class="app-header__subtitle">
+              Redux & API Dashboard
+            </p>
           </div>
-          <h1 class="app-header__title">
-            Preact RAG App
-          </h1>
-          <p class="app-header__subtitle">
-            Redux & API Dashboard
-          </p>
         </Container>
       </header>
 

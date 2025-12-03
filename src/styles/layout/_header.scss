@@ -10,12 +10,28 @@
   @include glass-effect;
   border-bottom: 1px solid $glass-border;
   padding: $spacing-1 0;
-  text-align: center;
+  display: flex;
+  align-items: center;
 
   &__logos {
     @include flex-center;
     gap: $spacing-2;
-    margin-bottom: $spacing-1;
+    flex-wrap: wrap;
+  }
+
+  &__content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex: 1;
+    text-align: center;
+  }
+
+  &__top-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
   }
 
   &__title {
@@ -27,6 +43,14 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    display: flex;
+    align-items: center;
+    gap: $spacing-2;
+  }
+
+  &__icon {
+    font-size: $font-size-lg;
+    flex-shrink: 0;
   }
 
   &__subtitle {
@@ -42,22 +66,49 @@
 
     &__title {
       font-size: $font-size-xl;
+      gap: $spacing-1;
+    }
+
+    &__icon {
+      font-size: $font-size-base;
     }
   }
 
   @include respond-to-max('sm') {
     padding: $spacing-2 0;
+    flex-direction: column;
+    gap: $spacing-3;
 
     &__logos {
       gap: $spacing-1;
+      align-self: flex-start;
+    }
+
+    &__content {
+      flex-direction: column;
+      gap: $spacing-1;
+      text-align: center;
+      align-items: center;
+    }
+
+    &__top-row {
+      justify-content: center;
+      gap: $spacing-2;
     }
 
     &__title {
       font-size: $font-size-lg;
+      gap: $spacing-1;
+      text-align: center;
+    }
+
+    &__icon {
+      font-size: $font-size-sm;
     }
 
     &__subtitle {
       font-size: $font-size-xs;
+      text-align: center;
     }
   }
 }

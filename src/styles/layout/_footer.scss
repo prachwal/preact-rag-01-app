@@ -17,4 +17,12 @@
     font-size: $font-size-sm;
     opacity: 0.8;
   }
+
+  @include respond-to-max('sm') {
+    padding: $spacing-3 0;
+
+    p {
+      font-size: $font-size-xs;
+    }
+  }
 }

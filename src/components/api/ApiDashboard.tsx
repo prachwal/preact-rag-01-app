@@ -81,7 +81,7 @@ export function ApiDashboard({ className = '' }: ApiDashboardProps) {
 
         <Section variant="dark" spacing="lg">
           <h3>Available Endpoints</h3>
-          <Grid columns="auto-fit" gap="md" minWidth="300px" className="endpoints-list">
+          <Grid columns="auto-fit" gap="md" minWidth="280px" className="endpoints-list">
             <div className="endpoint-group">
               <h4>Greeting Endpoints</h4>
               <ul>

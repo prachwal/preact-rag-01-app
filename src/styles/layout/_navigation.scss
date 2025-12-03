@@ -15,4 +15,8 @@
   padding: $spacing-2 0;
   border-bottom: 1px solid $glass-border;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+
+  @include respond-to-max('sm') {
+    padding: $spacing-1 0;
+  }
 }

@@ -4,6 +4,10 @@
 .btn {
   @include button-base;
 
+  // Touch targets for mobile
+  min-height: 48px;
+  min-width: 48px;
+
   // Size variants
   &--small {
     padding: $spacing-1 $spacing-3;

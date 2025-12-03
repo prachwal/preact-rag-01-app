@@ -171,4 +171,8 @@
   .endpoint-group {
     padding: $spacing-3;
   }
+
+  .endpoints-list {
+    grid-template-columns: 1fr !important;
+  }
 }

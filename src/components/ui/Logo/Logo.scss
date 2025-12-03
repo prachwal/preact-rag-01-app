@@ -2,8 +2,9 @@
 @use '../../../styles/abstracts/mixins' as *;
 
 .logo {
-  height: 3em;
-  padding: $spacing-3;
+  height: 2.5em;
+  padding: $spacing-2;
+  max-width: 100%;
   @include transition-base(filter);
 
   &:hover {
@@ -12,5 +13,15 @@
 
   &--preact:hover {
     filter: drop-shadow(0 0 2em #673ab8aa);
+  }
+
+  @include respond-to('md') {
+    height: 3em;
+    padding: $spacing-3;
+  }
+
+  @include respond-to('lg') {
+    height: 3.5em;
+    padding: $spacing-4;
   }
 }
